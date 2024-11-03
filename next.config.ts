@@ -5,7 +5,7 @@ const nextConfig = {
         unoptimized: true, // Disable default image optimization
     },
     // assetPrefix: isProd ? '/shutdown-timer/' : '',
-    basePath: isProd ? 'https://oabanin.github.io/shutdown-timer' : '',
+    basePath: isProd ? 'shutdown-timer' : '',
     output: 'export'
 };
 
