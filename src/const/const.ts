@@ -1,4 +1,4 @@
-export enum ActionType {
+export enum Action {
     shutdown = 'shutdown',
     restart = 'restart',
     sleep = 'sleep',
@@ -7,7 +7,7 @@ export enum ActionType {
     lock = 'lock',
 }
 
-export enum SecondOption {
+export enum Time {
     tenMinutes = 10 * 60,       // 10 minutes
     twentyMinutes = 20 * 60,    // 20 minutes
     halfAnHour = 30 * 60,       // 30 minutes

@@ -4,30 +4,30 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import {ActionType} from "@/const/const";
+import {Action} from "@/const/const";
 
 export default function ChooseAction() {
-    const [value, setValue] = React.useState<ActionType>(ActionType.shutdown);
+    const [value, setValue] = React.useState<Action>(Action.shutdown);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = (event.target as HTMLInputElement).value
-        setValue(value as ActionType);
+        setValue(value as Action);
     };
 
     return (
         <fieldset>
-            <legend>Select action</legend>
+            <legend>Choose action</legend>
             <FormControl>
                 <RadioGroup
                     value={value}
                     onChange={handleChange}
                 >
-                    <FormControlLabel value={ActionType.shutdown} control={<Radio/>} label="Shutdown"/>
-                    <FormControlLabel value={ActionType.restart} control={<Radio/>} label="Restart"/>
-                    <FormControlLabel value={ActionType.sleep} control={<Radio/>} label="Sleep"/>
-                    <FormControlLabel value={ActionType.hibernate} control={<Radio/>} label="Hibernate"/>
-                    <FormControlLabel value={ActionType.logout} control={<Radio/>} label="Logout"/>
-                    <FormControlLabel value={ActionType.lock} control={<Radio/>} label="Lock"/>
+                    <FormControlLabel value={Action.shutdown} control={<Radio/>} label="Shutdown"/>
+                    <FormControlLabel value={Action.restart} control={<Radio/>} label="Restart"/>
+                    <FormControlLabel value={Action.sleep} control={<Radio/>} label="Sleep"/>
+                    <FormControlLabel value={Action.hibernate} control={<Radio/>} label="Hibernate"/>
+                    <FormControlLabel value={Action.logout} control={<Radio/>} label="Logout"/>
+                    <FormControlLabel value={Action.lock} control={<Radio/>} label="Lock"/>
                 </RadioGroup>
             </FormControl>
         </fieldset>
