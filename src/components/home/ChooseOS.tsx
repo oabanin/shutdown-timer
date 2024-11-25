@@ -28,7 +28,7 @@ export default function ChooseOS() {
           <FormControlLabel
             value={OS.WINDOWS}
             control={<Radio />}
-            label="Windows"
+            label="Windows Vista/7/10/11"
           />
           <FormControlLabel
             value={OS.MACOS}

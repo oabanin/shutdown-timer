@@ -31,10 +31,10 @@ export enum OS {
 
 // Define the OS categories using a Map
 const OS_GROUPS = new Map([
-  ["WINDOWS", [OS.WINDOWS]],
-  ["MACOS", [OS.MACOS]],
+  [OS.WINDOWS, [OS.WINDOWS]],
+  [OS.MACOS, [OS.MACOS]],
   [
-    "LINUX",
+    OS.LINUX,
     [
       OS.LINUX,
       "PCLinuxOS",

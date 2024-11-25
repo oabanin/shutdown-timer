@@ -1,6 +1,10 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import * as React from "react";
+import { generate } from "@/utils/generate";
+import { useFormContext, useWatch } from "react-hook-form";
+
+import { TValues } from "@/types";
 
 const commonStyles = {
   bgcolor: "background.paper",
@@ -10,9 +14,19 @@ const commonStyles = {
 };
 
 export const BoxCopy = () => {
+  const { control } = useFormContext<TValues>();
+
+  const all = useWatch({
+    control,
+  });
+
+  console.log(all, "all!!!");
+
+  const cmd = generate(all as TValues);
+  console.log(cmd);
   return (
     <Box sx={{ display: "flex", alignItems: "center" }}>
-      <Box sx={{ ...commonStyles, borderRadius: "16px" }} />
+      <Box sx={{ ...commonStyles, borderRadius: "16px" }}>{cmd}</Box>
       <Button type="submit" variant="outlined" size="large">
         Copy command
       </Button>
