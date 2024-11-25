@@ -16,10 +16,10 @@ export default function ChooseTime() {
   const [selected, setSelected] = React.useState<string>(
     Time.twoHours.toString(),
   );
+  const [date, setDate] = React.useState<Dayjs | null>(dayjs().add(2, "hour"));
   const [input, setInput] = React.useState(Time.twoHours.toString());
-  const inputTouched = useRef(false);
-  const [date, setDate] = React.useState<Dayjs | null>(dayjs());
 
+  const inputTouched = useRef(false);
   const handleSelectedChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const eventValue = (event.target as HTMLInputElement).value;
     setSelected(eventValue);
@@ -84,20 +84,40 @@ export default function ChooseTime() {
             label={
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DateTimePicker
-                  // sx={{ minWidth:  }}
+                  disablePast={true}
                   views={["year", "day", "hours", "minutes", "seconds"]}
                   value={date}
-                  onChange={setDate}
+                  onChange={(newDate) => {
+                    if (newDate) {
+                      // Calculate the absolute number of seconds between now and the selected date
+                      const secondsDifference = Math.abs(
+                        dayjs().diff(newDate, "second"),
+                      );
+                      console.log(
+                        `Difference in seconds: ${secondsDifference}`,
+                      );
+                    }
+                    setDate(newDate);
+                  }}
+                  slotProps={{
+                    textField: {
+                      sx: {
+                        ".MuiInputBase-input": {
+                          minWidth: "179px",
+                        },
+                      },
+                    },
+                  }}
                 />
               </LocalizationProvider>
             }
           />
           <FormControlLabel
             value={CustomTime.manual}
+            sx={{ paddingTop: "12px" }}
             control={<Radio />}
             label={
               <TextField
-                sx={{ maxWidth: "100px" }}
                 label="Seconds"
                 variant="outlined"
                 value={input}
@@ -106,6 +126,14 @@ export default function ChooseTime() {
                     inputTouched.current = true;
                   }
                   setInput(event.target.value);
+                }}
+                InputProps={{
+                  inputProps: {
+                    min: 0,
+                    max: 315360000,
+                    type: "number",
+                    inputMode: "numeric", // Mobile-friendly numeric keyboard
+                  },
                 }}
               />
             }

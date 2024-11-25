@@ -6,9 +6,13 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import { Action } from "@/const/const";
 
-export default function ChooseAction() {
-  const [action, setAction] = React.useState<Action>(Action.shutdown);
-
+export default function ChooseAction({
+  action,
+  setAction,
+}: {
+  action: Action;
+  setAction: React.Dispatch<React.SetStateAction<Action>>;
+}) {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = (event.target as HTMLInputElement).value;
     setAction(value as Action);

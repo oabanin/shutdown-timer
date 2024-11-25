@@ -21,7 +21,8 @@
     "dayjs": "^1.11.13",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-hook-form": "^7.53.2"
   },
   "devDependencies": {
     "@types/node": "latest",
