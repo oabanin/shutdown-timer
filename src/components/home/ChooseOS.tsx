@@ -5,14 +5,20 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import { OS } from "@/const/const";
+import { useFormContext, useWatch } from "react-hook-form";
 
 export default function ChooseOS() {
-  const [os, setOs] = React.useState<OS>(OS.windows);
+  const { control, setValue } = useFormContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = (event.target as HTMLInputElement).value;
-    setOs(value as OS);
+    setValue("os", value as OS);
   };
+
+  const os = useWatch({
+    control,
+    name: "os",
+  });
 
   return (
     <fieldset>
@@ -20,17 +26,17 @@ export default function ChooseOS() {
       <FormControl>
         <RadioGroup value={os} onChange={handleChange}>
           <FormControlLabel
-            value={OS.windows}
+            value={OS.WINDOWS}
             control={<Radio />}
             label="Windows"
           />
           <FormControlLabel
-            value={OS.macos}
+            value={OS.MACOS}
             control={<Radio />}
             label="MacOS"
           />
           <FormControlLabel
-            value={OS.linux}
+            value={OS.LINUX}
             control={<Radio />}
             label="Linux"
           />

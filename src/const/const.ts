@@ -24,7 +24,36 @@ export enum CustomTime {
 }
 
 export enum OS {
-  windows = "windows",
-  macos = "macos",
-  linux = "linux",
+  WINDOWS = "Windows",
+  MACOS = "macOS",
+  LINUX = "Linux",
+}
+
+// Define the OS categories using a Map
+const OS_GROUPS = new Map([
+  ["WINDOWS", [OS.WINDOWS]],
+  ["MACOS", [OS.MACOS]],
+  [
+    "LINUX",
+    [
+      OS.LINUX,
+      "PCLinuxOS",
+      "VectorLinux",
+      "Unix",
+      "Ubuntu",
+      "Debian",
+      "Fedora",
+    ],
+  ],
+]);
+
+// Function to check if an OS exists in any category
+export function getCategoryForOS(os?: string): OS | undefined {
+  if (!os) return;
+  for (const [category, osList] of OS_GROUPS.entries()) {
+    if (osList.includes(os)) {
+      return category; // Return the category name where the OS is found
+    }
+  }
+  return;
 }

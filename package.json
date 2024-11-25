@@ -22,7 +22,8 @@
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "react-hook-form": "^7.53.2"
+    "react-hook-form": "^7.53.2",
+    "ua-parser-js": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "latest",

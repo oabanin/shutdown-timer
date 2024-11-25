@@ -1,0 +1,10 @@
+import { Action, OS } from "@/const/const";
+import dayjs from "dayjs";
+
+export type TValues = {
+  action: Action;
+  time: string;
+  date: dayjs.Dayjs;
+  input: string;
+  os: OS;
+};

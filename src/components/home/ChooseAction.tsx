@@ -5,24 +5,26 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import { Action } from "@/const/const";
+import { useFormContext, useWatch } from "react-hook-form";
 
-export default function ChooseAction({
-  action,
-  setAction,
-}: {
-  action: Action;
-  setAction: React.Dispatch<React.SetStateAction<Action>>;
-}) {
+export default function ChooseAction() {
+  const { control, setValue } = useFormContext();
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = (event.target as HTMLInputElement).value;
-    setAction(value as Action);
+    setValue("action", value as Action);
   };
+
+  const firstName = useWatch({
+    control,
+    name: "action",
+  });
 
   return (
     <fieldset>
       <legend>Choose action</legend>
       <FormControl>
-        <RadioGroup value={action} onChange={handleChange}>
+        <RadioGroup value={firstName} onChange={handleChange}>
           <FormControlLabel
             value={Action.shutdown}
             control={<Radio />}

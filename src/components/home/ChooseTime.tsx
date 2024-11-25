@@ -6,30 +6,31 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import { CustomTime, Time } from "@/const/const";
 import { TextField } from "@mui/material";
-import dayjs, { Dayjs } from "dayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { useRef } from "react";
+import { useFormContext, useWatch } from "react-hook-form";
 
 export default function ChooseTime() {
-  const [selected, setSelected] = React.useState<string>(
-    Time.twoHours.toString(),
-  );
-  const [date, setDate] = React.useState<Dayjs | null>(dayjs().add(2, "hour"));
-  const [input, setInput] = React.useState(Time.twoHours.toString());
+  const { control, setValue } = useFormContext();
+
+  const [selected, date, input] = useWatch({
+    control,
+    name: ["time", "date", "input"],
+  });
 
   const inputTouched = useRef(false);
   const handleSelectedChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const eventValue = (event.target as HTMLInputElement).value;
-    setSelected(eventValue);
+    setValue("time", eventValue);
 
     if (
       eventValue !== CustomTime.manual &&
       eventValue !== CustomTime.date &&
       !inputTouched.current
     ) {
-      setInput(eventValue);
+      setValue("input", eventValue);
     }
   };
 
@@ -88,16 +89,7 @@ export default function ChooseTime() {
                   views={["year", "day", "hours", "minutes", "seconds"]}
                   value={date}
                   onChange={(newDate) => {
-                    if (newDate) {
-                      // Calculate the absolute number of seconds between now and the selected date
-                      const secondsDifference = Math.abs(
-                        dayjs().diff(newDate, "second"),
-                      );
-                      console.log(
-                        `Difference in seconds: ${secondsDifference}`,
-                      );
-                    }
-                    setDate(newDate);
+                    setValue("date", newDate);
                   }}
                   slotProps={{
                     textField: {
@@ -125,7 +117,7 @@ export default function ChooseTime() {
                   if (!inputTouched.current) {
                     inputTouched.current = true;
                   }
-                  setInput(event.target.value);
+                  setValue("input", event.target.value);
                 }}
                 InputProps={{
                   inputProps: {
