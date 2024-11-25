@@ -52,7 +52,7 @@ export function getCategoryForOS(os?: string): OS | undefined {
   if (!os) return;
   for (const [category, osList] of OS_GROUPS.entries()) {
     if (osList.includes(os)) {
-      return category; // Return the category name where the OS is found
+      return category as OS; // Return the category name where the OS is found
     }
   }
   return;
