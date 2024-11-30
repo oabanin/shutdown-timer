@@ -9,28 +9,36 @@ import { TextField } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
-import { useRef } from "react";
 import { useFormContext, useWatch } from "react-hook-form";
 
 export default function ChooseTime() {
-  const { control, setValue } = useFormContext();
+  const { control, setValue, getFieldState } = useFormContext();
 
-  const [selected, date, input] = useWatch({
+  const [selected, date, seconds, minutes] = useWatch({
     control,
-    name: ["time", "date", "input"],
+    name: ["time", "date", "seconds", "minutes"],
   });
 
-  const inputTouched = useRef(false);
   const handleSelectedChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const eventValue = (event.target as HTMLInputElement).value;
     setValue("time", eventValue);
 
-    if (
-      eventValue !== CustomTime.manual &&
-      eventValue !== CustomTime.date &&
-      !inputTouched.current
-    ) {
-      setValue("input", eventValue);
+    const isCustomTime = [
+      CustomTime.seconds,
+      CustomTime.minutes,
+      CustomTime.date,
+    ].includes(eventValue as CustomTime);
+
+    if (isCustomTime) return;
+
+    console.log("123");
+
+    if (!getFieldState("seconds").isTouched) {
+      setValue("seconds", eventValue);
+    }
+
+    if (!getFieldState("minutes").isTouched) {
+      setValue("minutes", Number(eventValue) / 60);
     }
   };
 
@@ -118,12 +126,11 @@ export default function ChooseTime() {
                 <TextField
                   label="Minutes"
                   variant="outlined"
-                  value={input}
+                  value={minutes}
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                    if (!inputTouched.current) {
-                      inputTouched.current = true;
-                    }
-                    setValue("minutes", event.target.value);
+                    setValue("minutes", event.target.value, {
+                      shouldTouch: true,
+                    });
                   }}
                   InputProps={{
                     inputProps: {
@@ -147,12 +154,11 @@ export default function ChooseTime() {
                 <TextField
                   label="Seconds"
                   variant="outlined"
-                  value={input}
+                  value={seconds}
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                    if (!inputTouched.current) {
-                      inputTouched.current = true;
-                    }
-                    setValue("seconds", event.target.value);
+                    setValue("seconds", event.target.value, {
+                      shouldTouch: true,
+                    });
                   }}
                   InputProps={{
                     inputProps: {

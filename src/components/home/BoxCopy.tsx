@@ -21,10 +21,8 @@ export const BoxCopy = () => {
     control,
   });
 
-  console.log(all, "all!!!");
-
   const cmd = generate(all as TValues);
-  console.log(cmd);
+
   return (
     <Box sx={{ display: "flex", alignItems: "center" }}>
       <TextareaAutosize value={cmd}></TextareaAutosize>;

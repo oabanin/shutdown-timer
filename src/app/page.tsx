@@ -64,7 +64,7 @@ export default function Home() {
   useEffect(() => {
     const parser = new UAParser();
     const detectedOs = parser.getOS();
-    console.log(detectedOs);
+
     reset((formValues) => {
       return {
         ...formValues,
@@ -92,21 +92,24 @@ export default function Home() {
               // justifyItems: "center",
               // justifyContent: "space-evenly",
               display: "flex",
-              flexWrap: "wrap",
               gap: "5px",
             }}
           >
-            <ChooseOS />
-            <ChooseAction />
+            <div>
+              <ChooseOS />
+              <ChooseAction />
+              <ForcedShutdown />
+              <OneLineCommand />
+            </div>
             <ChooseTime />
-            {/*<Link href="/about" color="secondary" component={NextLink}>*/}
-            {/*  Go to the about page*/}
-            {/*</Link>*/}
-            {/*<ProTip />*/}
-            {/*<Copyright />*/}
           </Box>
-          <ForcedShutdown />
-          <OneLineCommand />
+
+          {/*<Link href="/about" color="secondary" component={NextLink}>*/}
+          {/*  Go to the about page*/}
+          {/*</Link>*/}
+          {/*<ProTip />*/}
+          {/*<Copyright />*/}
+
           <BoxCopy />
           <Button type="submit" variant="contained" size="large">
             Download bat file
