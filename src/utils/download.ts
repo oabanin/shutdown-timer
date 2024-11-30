@@ -24,6 +24,3 @@ export function download(
     }, 0);
   }
 }
-
-//download("Hello, World!", "example.txt", "text/plain");
-//download('shutdown 121','test.bat',"text/plain;charset=utf-8")

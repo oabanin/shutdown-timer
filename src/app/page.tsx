@@ -6,9 +6,9 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
 import ChooseAction from "@/components/home/ChooseAction";
-import ChooseTime from "@/components/home/ChooseTime";
+import ChooseTime from "@/components/home/ChooseTIme/ChooseTime";
 import ChooseOS from "@/components/home/ChooseOS";
-import { BoxCopy } from "@/components/home/BoxCopy";
+import { BoxCopy } from "@/components/home/BoxCopy/BoxCopy";
 import { Action, getCategoryForOS, OS, Time } from "@/const/const";
 import ForcedShutdown from "@/components/home/ForcedShutdown";
 import { FormProvider, useForm } from "react-hook-form";
@@ -18,6 +18,8 @@ import { TValues } from "@/types";
 import { UAParser } from "ua-parser-js";
 import { generate } from "@/utils/generate";
 import OneLineCommand from "@/components/home/OneLine";
+import { download } from "@/utils/download";
+import { DownloadButton } from "@/components/home/DownloadButton/DownloadButton";
 
 //WINDOWS XP
 
@@ -75,8 +77,13 @@ export default function Home() {
   }, []);
 
   const onSubmit = (data: TValues) => {
-    console.log(data);
-    console.log(generate(data));
+    const cmd = generate(data);
+
+    const isMacOS = data.os === OS.MACOS;
+
+    const extension = isMacOS ? "sh" : "bat";
+
+    download(cmd, `test.${extension}`, "text/plain;charset=utf-8");
   };
   return (
     <FormProvider reset={reset} handleSubmit={handleSubmit} {...rest}>
@@ -90,9 +97,10 @@ export default function Home() {
               my: 4,
               // gridTemplateColumns: "repeat(auto-fill , minmax(300px, 1fr))",
               // justifyItems: "center",
-              // justifyContent: "space-evenly",
+              justifyContent: "center",
               display: "flex",
               gap: "5px",
+              flexWrap: "wrap",
             }}
           >
             <div>
@@ -111,9 +119,7 @@ export default function Home() {
           {/*<Copyright />*/}
 
           <BoxCopy />
-          <Button type="submit" variant="contained" size="large">
-            Download bat file
-          </Button>
+          <DownloadButton />
         </Container>
       </form>
     </FormProvider>

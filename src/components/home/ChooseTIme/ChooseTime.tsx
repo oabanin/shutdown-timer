@@ -10,6 +10,13 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { useFormContext, useWatch } from "react-hook-form";
+import Box from "@mui/material/Box";
+import s from "./ChooseTime.module.scss";
+
+// import dayjs from "dayjs";
+// import duration from "dayjs/plugin/duration";
+import { formatDuration } from "@/utils/formatDuration";
+// dayjs.extend(duration);
 
 export default function ChooseTime() {
   const { control, setValue, getFieldState } = useFormContext();
@@ -31,8 +38,6 @@ export default function ChooseTime() {
 
     if (isCustomTime) return;
 
-    console.log("123");
-
     if (!getFieldState("seconds").isTouched) {
       setValue("seconds", eventValue);
     }
@@ -47,51 +52,60 @@ export default function ChooseTime() {
       <legend>Choose time</legend>
       <FormControl>
         <RadioGroup value={selected} onChange={handleSelectedChange}>
-          <FormControlLabel
-            value={Time.immediate}
-            control={<Radio />}
-            label="Immediate"
-          />
-          <FormControlLabel
-            value={Time.tenMinutes}
-            control={<Radio />}
-            label="10 minutes"
-          />
-          <FormControlLabel
-            value={Time.twentyMinutes}
-            control={<Radio />}
-            label="20 minutes"
-          />
-          <FormControlLabel
-            value={Time.halfAnHour}
-            control={<Radio />}
-            label="Half an hour"
-          />
-          <FormControlLabel
-            value={Time.oneHour}
-            control={<Radio />}
-            label="1 hour"
-          />
-          <FormControlLabel
-            value={Time.twoHours}
-            control={<Radio />}
-            label="2 hours"
-          />
-          <FormControlLabel
-            value={Time.threeHours}
-            control={<Radio />}
-            label="3 hours"
-          />
-          <FormControlLabel
-            value={Time.fourHours}
-            control={<Radio />}
-            label="4 hours"
-          />
-          <FormControlLabel
-            value={Time.fiveHours}
-            control={<Radio />}
-            label="5 hours"
-          />
+          <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+            <FormControlLabel
+              value={Time.immediate}
+              control={<Radio />}
+              label="Immediate"
+            />
+            <FormControlLabel
+              value={Time.twoHours}
+              control={<Radio />}
+              label="2 hours"
+            />
+            <FormControlLabel
+              value={Time.tenMinutes}
+              control={<Radio />}
+              label="10 minutes"
+            />
+            <FormControlLabel
+              value={Time.threeHours}
+              control={<Radio />}
+              label="3 hours"
+            />
+            <FormControlLabel
+              value={Time.twentyMinutes}
+              control={<Radio />}
+              label="20 minutes"
+            />
+
+            <FormControlLabel
+              value={Time.fourHours}
+              control={<Radio />}
+              label="4 hours"
+            />
+            <FormControlLabel
+              value={Time.halfAnHour}
+              control={<Radio />}
+              label="Half an hour"
+            />
+            <FormControlLabel
+              value={Time.fiveHours}
+              control={<Radio />}
+              label="5 hours"
+            />
+            <FormControlLabel
+              value={Time.oneHour}
+              control={<Radio />}
+              label="1 hour"
+            />
+            <FormControlLabel
+              value={Time.sixHours}
+              control={<Radio />}
+              label="6 hours"
+            />
+          </Box>
+
           <FormControlLabel
             value={CustomTime.date}
             control={<Radio />}
@@ -122,7 +136,7 @@ export default function ChooseTime() {
             sx={{ paddingTop: "12px" }}
             control={<Radio />}
             label={
-              <>
+              <div className={s.inputContainer}>
                 <TextField
                   label="Minutes"
                   variant="outlined"
@@ -135,14 +149,18 @@ export default function ChooseTime() {
                   InputProps={{
                     inputProps: {
                       min: 0,
-                      // max: 315360000,
+                      max: 5256000,
                       type: "number",
                       inputMode: "numeric", // Mobile-friendly numeric keyboard
                     },
                   }}
                 />
-                (2 hours 30 minutes)
-              </>
+                {minutes && (
+                  <div className={s.inputTextMin}>
+                    ({formatDuration(minutes * 60)})
+                  </div>
+                )}
+              </div>
             }
           />
           <FormControlLabel
@@ -150,7 +168,7 @@ export default function ChooseTime() {
             sx={{ paddingTop: "12px" }}
             control={<Radio />}
             label={
-              <>
+              <div className={s.inputContainer}>
                 <TextField
                   label="Seconds"
                   variant="outlined"
@@ -169,8 +187,12 @@ export default function ChooseTime() {
                     },
                   }}
                 />
-                (2 hours 30 minutes)
-              </>
+                {seconds && (
+                  <div className={s.inputTextSec}>
+                    ({formatDuration(seconds)})
+                  </div>
+                )}
+              </div>
             }
           />
         </RadioGroup>

@@ -17,6 +17,7 @@ export enum Time {
   threeHours = 3 * 3600, // 3 hours
   fourHours = 4 * 3600, // 4 hours
   fiveHours = 5 * 3600, // 5 hours
+  sixHours = 6 * 3600, // 6 hours
 }
 
 export enum CustomTime {
