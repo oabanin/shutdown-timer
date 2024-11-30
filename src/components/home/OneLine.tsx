@@ -2,7 +2,7 @@ import * as React from "react";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
-export default function ForcedShutdown() {
+export default function OneLineCommand() {
   const [checked, setChecked] = React.useState(true);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,7 +12,7 @@ export default function ForcedShutdown() {
   return (
     <FormControlLabel
       control={<Checkbox checked={checked} onChange={handleChange} />}
-      label="Force shutdown"
+      label="One line command"
     />
   );
 }

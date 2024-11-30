@@ -40,7 +40,12 @@ export default function ChooseTime() {
       <FormControl>
         <RadioGroup value={selected} onChange={handleSelectedChange}>
           <FormControlLabel
-            value={Time.tenMinutes.toString()}
+            value={Time.immediate}
+            control={<Radio />}
+            label="Immediate"
+          />
+          <FormControlLabel
+            value={Time.tenMinutes}
             control={<Radio />}
             label="10 minutes"
           />
@@ -105,29 +110,61 @@ export default function ChooseTime() {
             }
           />
           <FormControlLabel
-            value={CustomTime.manual}
+            value={CustomTime.minutes}
             sx={{ paddingTop: "12px" }}
             control={<Radio />}
             label={
-              <TextField
-                label="Seconds"
-                variant="outlined"
-                value={input}
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  if (!inputTouched.current) {
-                    inputTouched.current = true;
-                  }
-                  setValue("input", event.target.value);
-                }}
-                InputProps={{
-                  inputProps: {
-                    min: 0,
-                    max: 315360000,
-                    type: "number",
-                    inputMode: "numeric", // Mobile-friendly numeric keyboard
-                  },
-                }}
-              />
+              <>
+                <TextField
+                  label="Minutes"
+                  variant="outlined"
+                  value={input}
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                    if (!inputTouched.current) {
+                      inputTouched.current = true;
+                    }
+                    setValue("minutes", event.target.value);
+                  }}
+                  InputProps={{
+                    inputProps: {
+                      min: 0,
+                      // max: 315360000,
+                      type: "number",
+                      inputMode: "numeric", // Mobile-friendly numeric keyboard
+                    },
+                  }}
+                />
+                (2 hours 30 minutes)
+              </>
+            }
+          />
+          <FormControlLabel
+            value={CustomTime.seconds}
+            sx={{ paddingTop: "12px" }}
+            control={<Radio />}
+            label={
+              <>
+                <TextField
+                  label="Seconds"
+                  variant="outlined"
+                  value={input}
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                    if (!inputTouched.current) {
+                      inputTouched.current = true;
+                    }
+                    setValue("seconds", event.target.value);
+                  }}
+                  InputProps={{
+                    inputProps: {
+                      min: 0,
+                      max: 315360000,
+                      type: "number",
+                      inputMode: "numeric", // Mobile-friendly numeric keyboard
+                    },
+                  }}
+                />
+                (2 hours 30 minutes)
+              </>
             }
           />
         </RadioGroup>

@@ -17,6 +17,7 @@ import dayjs from "dayjs";
 import { TValues } from "@/types";
 import { UAParser } from "ua-parser-js";
 import { generate } from "@/utils/generate";
+import OneLineCommand from "@/components/home/OneLine";
 
 //WINDOWS XP
 
@@ -43,13 +44,17 @@ import { generate } from "@/utils/generate";
 // IF Hibernate doesn't work check our article
 // Hibernate
 
+//MAC OS
+//sudo shutdown -h now
+
 //
 
 const defaultValues: TValues = {
   action: Action.shutdown,
   time: Time.twoHours.toString(),
   date: dayjs().add(2, "hour"),
-  input: Time.twoHours.toString(),
+  seconds: Time.twoHours.toString(),
+  minutes: "120",
   os: OS.WINDOWS,
 };
 
@@ -91,10 +96,9 @@ export default function Home() {
               gap: "5px",
             }}
           >
+            <ChooseOS />
             <ChooseAction />
             <ChooseTime />
-            <ChooseOS />
-
             {/*<Link href="/about" color="secondary" component={NextLink}>*/}
             {/*  Go to the about page*/}
             {/*</Link>*/}
@@ -102,6 +106,7 @@ export default function Home() {
             {/*<Copyright />*/}
           </Box>
           <ForcedShutdown />
+          <OneLineCommand />
           <BoxCopy />
           <Button type="submit" variant="contained" size="large">
             Download bat file

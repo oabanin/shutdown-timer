@@ -5,6 +5,7 @@ export type TValues = {
   action: Action;
   time: string;
   date: dayjs.Dayjs;
-  input: string;
+  seconds: string;
+  minutes: string;
   os: OS;
 };

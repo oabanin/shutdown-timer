@@ -8,6 +8,7 @@ export enum Action {
 }
 
 export enum Time {
+  immediate = 0, // 10 minutes
   tenMinutes = 10 * 60, // 10 minutes
   twentyMinutes = 20 * 60, // 20 minutes
   halfAnHour = 30 * 60, // 30 minutes
@@ -19,7 +20,8 @@ export enum Time {
 }
 
 export enum CustomTime {
-  manual = "manual",
+  seconds = "seconds",
+  minutes = "minutes",
   date = "date",
 }
 
