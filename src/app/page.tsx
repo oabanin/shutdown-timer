@@ -12,7 +12,6 @@ import { BoxCopy } from "@/components/home/BoxCopy/BoxCopy";
 import { Action, getCategoryForOS, OS, Time } from "@/const/const";
 import ForcedShutdown from "@/components/home/ForcedShutdown";
 import { FormProvider, useForm } from "react-hook-form";
-import Button from "@mui/material/Button";
 import dayjs from "dayjs";
 import { TValues } from "@/types";
 import { UAParser } from "ua-parser-js";

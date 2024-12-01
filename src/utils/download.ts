@@ -6,9 +6,9 @@ export function download(
   const file = new Blob([data], { type });
 
   // Check for msSaveOrOpenBlob
-  // @ts-ignore
+  // @ts-expect-error msSaveOrOpenBlob
   if (window.navigator.msSaveOrOpenBlob) {
-    // @ts-ignore
+    // @ts-expect-error msSaveOrOpenBlob
     window.navigator.msSaveOrOpenBlob(file, filename);
   } else {
     // Other browsers
