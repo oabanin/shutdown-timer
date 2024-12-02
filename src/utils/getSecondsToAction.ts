@@ -1,8 +1,8 @@
-import { TValues } from "@/types";
+import { GenerateValues } from "@/types";
 import { CustomTime } from "@/const/const";
 import dayjs from "dayjs";
 
-export function getSecondsToAction(data: TValues) {
+export function getSecondsToAction(data: GenerateValues) {
   if (!data || !data.time) {
     return "0";
   }

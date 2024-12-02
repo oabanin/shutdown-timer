@@ -8,4 +8,9 @@ export type TValues = {
   seconds: string;
   minutes: string;
   os: OS;
+
+  cmd: string;
+  filename: string;
 };
+
+export type GenerateValues = Omit<TValues, "cmd" | "filename">;

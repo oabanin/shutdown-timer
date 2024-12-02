@@ -1,20 +1,17 @@
-import Box from "@mui/material/Box";
-import * as React from "react";
-import { generate } from "@/utils/generate";
 import { useFormContext, useWatch } from "react-hook-form";
-import s from "./BoxCopy.module.scss";
-
 import { TValues } from "@/types";
+import Box from "@mui/material/Box";
 import { TextField } from "@mui/material";
+import s from "@/components/home/TextFieldCopy/TextFieldCopy.module.scss";
+import * as React from "react";
 
-export const BoxCopy = () => {
+export const FileName = () => {
   const { control } = useFormContext<TValues>();
 
-  const all = useWatch({
+  const filename = useWatch({
     control,
+    name: "filename",
   });
-
-  const cmd = generate(all as TValues);
 
   return (
     <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
@@ -22,7 +19,7 @@ export const BoxCopy = () => {
         className={s.textarea}
         multiline
         rows={3}
-        value={cmd}
+        value={filename}
       ></TextField>
     </Box>
   );

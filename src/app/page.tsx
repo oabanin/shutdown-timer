@@ -8,7 +8,7 @@ import Box from "@mui/material/Box";
 import ChooseAction from "@/components/home/ChooseAction";
 import ChooseTime from "@/components/home/ChooseTIme/ChooseTime";
 import ChooseOS from "@/components/home/ChooseOS";
-import { BoxCopy } from "@/components/home/BoxCopy/BoxCopy";
+import { TextFieldCopy } from "@/components/home/TextFieldCopy/TextFieldCopy";
 import { Action, getCategoryForOS, OS, Time } from "@/const/const";
 import ForcedShutdown from "@/components/home/ForcedShutdown";
 import { FormProvider, useForm } from "react-hook-form";
@@ -45,11 +45,6 @@ import { DownloadButton } from "@/components/home/DownloadButton/DownloadButton"
 // IF Hibernate doesn't work check our article
 // Hibernate
 
-//MAC OS
-//sudo shutdown -h now
-
-//
-
 const defaultValues: TValues = {
   action: Action.shutdown,
   time: Time.twoHours.toString(),
@@ -57,6 +52,8 @@ const defaultValues: TValues = {
   seconds: Time.twoHours.toString(),
   minutes: "120",
   os: OS.WINDOWS,
+  filename: "",
+  cmd: "",
 };
 
 export default function Home() {
@@ -81,8 +78,9 @@ export default function Home() {
     const isMacOS = data.os === OS.MACOS;
 
     const extension = isMacOS ? "sh" : "bat";
+    const prefix = isMacOS ? "#!/bin/bash\r\n" : "";
 
-    download(cmd, `test.${extension}`, "text/plain;charset=utf-8");
+    download(prefix + cmd, `test.${extension}`, "text/plain;charset=utf-8");
   };
   return (
     <FormProvider reset={reset} handleSubmit={handleSubmit} {...rest}>
@@ -117,7 +115,7 @@ export default function Home() {
           {/*<ProTip />*/}
           {/*<Copyright />*/}
 
-          <BoxCopy />
+          <TextFieldCopy />
           <DownloadButton />
         </Container>
       </form>

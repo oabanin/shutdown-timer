@@ -43,7 +43,7 @@ export default function ChooseTime() {
     }
 
     if (!getFieldState("minutes").isTouched) {
-      setValue("minutes", Number(eventValue) / 60);
+      setValue("minutes", (Number(eventValue) / 60).toString());
     }
   };
 
@@ -155,7 +155,7 @@ export default function ChooseTime() {
                     },
                   }}
                 />
-                {minutes && (
+                {minutes && minutes !== "0" && (
                   <div className={s.inputTextMin}>
                     ({formatDuration(minutes * 60)})
                   </div>
@@ -187,7 +187,7 @@ export default function ChooseTime() {
                     },
                   }}
                 />
-                {seconds && (
+                {seconds && seconds !== "0" && (
                   <div className={s.inputTextSec}>
                     ({formatDuration(seconds)})
                   </div>

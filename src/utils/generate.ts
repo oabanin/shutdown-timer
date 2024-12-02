@@ -1,11 +1,11 @@
-import { TValues } from "@/types";
+import { GenerateValues } from "@/types";
 import { OS } from "@/const/const";
 
 import { getSecondsToAction } from "@/utils/getSecondsToAction";
 import { getCMDWindows } from "@/utils/getCMDWindows";
 import { getCMDMacOS } from "@/utils/getCMDMacOS";
 
-export const generate = (data: TValues) => {
+export const generate = (data: GenerateValues) => {
   const isMacOS = data.os === OS.MACOS;
 
   const secondsToAction = getSecondsToAction(data);
