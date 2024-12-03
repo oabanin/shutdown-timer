@@ -9,15 +9,15 @@ export enum Action {
 
 export enum Time {
   immediate = 0, // 10 minutes
-  tenMinutes = 10 * 60, // 10 minutes
-  twentyMinutes = 20 * 60, // 20 minutes
-  halfAnHour = 30 * 60, // 30 minutes
+  tenMinutes = 600, // 10 minutes
+  twentyMinutes = 1200, // 20 minutes
+  halfAnHour = 1800, // 30 minutes
   oneHour = 3600, // 1 hour
-  twoHours = 2 * 3600, // 2 hours
-  threeHours = 3 * 3600, // 3 hours
-  fourHours = 4 * 3600, // 4 hours
-  fiveHours = 5 * 3600, // 5 hours
-  sixHours = 6 * 3600, // 6 hours
+  twoHours = 7200, // 2 hours
+  threeHours = 10800, // 3 hours
+  fourHours = 14400, // 4 hours
+  fiveHours = 18000, // 5 hours
+  sixHours = 21600, // 6 hours
 }
 
 export enum CustomTime {

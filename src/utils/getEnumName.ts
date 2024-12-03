@@ -1,6 +1,8 @@
 export function getEnumName<T extends Record<string, number | string>>(
-  enumObject: T,
   value: T[keyof T],
+  enumObject: T,
 ): string | undefined {
-  return Object.keys(enumObject).find((key) => enumObject[key] === value);
+  return Object.keys(enumObject).find(
+    (key) => String(enumObject[key]) === String(value),
+  );
 }

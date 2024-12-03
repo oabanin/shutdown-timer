@@ -19,6 +19,7 @@ import { generate } from "@/utils/generate";
 import OneLineCommand from "@/components/home/OneLine";
 import { download } from "@/utils/download";
 import { DownloadButton } from "@/components/home/DownloadButton/DownloadButton";
+import { FileName } from "@/components/home/Filename/FileName";
 
 //WINDOWS XP
 
@@ -105,6 +106,9 @@ export default function Home() {
               <ChooseAction />
               <ForcedShutdown />
               <OneLineCommand />
+              <div>
+                <FileName />
+              </div>
             </div>
             <ChooseTime />
           </Box>

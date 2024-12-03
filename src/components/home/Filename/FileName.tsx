@@ -1,26 +1,46 @@
 import { useFormContext, useWatch } from "react-hook-form";
 import { TValues } from "@/types";
-import Box from "@mui/material/Box";
+
 import { TextField } from "@mui/material";
-import s from "@/components/home/TextFieldCopy/TextFieldCopy.module.scss";
+
 import * as React from "react";
 
-export const FileName = () => {
-  const { control } = useFormContext<TValues>();
+import { useEffect } from "react";
+import { generateFilename } from "@/utils/generateFilename";
 
-  const filename = useWatch({
+export const FileName = () => {
+  const { control, setValue, getFieldState } = useFormContext<TValues>();
+
+  const [action, time, date, seconds, minutes, os, filename] = useWatch({
     control,
-    name: "filename",
+    name: ["action", "time", "date", "seconds", "minutes", "os", "filename"],
   });
 
+  const name = generateFilename({
+    action,
+    time,
+    date,
+    seconds,
+    minutes,
+    os,
+  });
+
+  useEffect(() => {
+    if (!getFieldState("filename").isTouched) {
+      setValue("filename", name);
+    }
+  }, [name]);
+
   return (
-    <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
-      <TextField
-        className={s.textarea}
-        multiline
-        rows={3}
-        value={filename}
-      ></TextField>
-    </Box>
+    <TextField
+      onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+        setValue("filename", event.target.value, {
+          shouldTouch: true,
+        });
+      }}
+      sx={{ width: "100%" }}
+      label="Filename"
+      value={filename}
+    ></TextField>
   );
 };
