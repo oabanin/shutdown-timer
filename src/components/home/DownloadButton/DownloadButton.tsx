@@ -3,9 +3,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import s from "@/components/home/TextFieldCopy/TextFieldCopy.module.scss";
 import { useFormContext, useWatch } from "react-hook-form";
-import { generate } from "@/utils/generate";
-import { GenerateValues, TValues } from "@/types";
-import { useEffect } from "react";
+import { TValues } from "@/types";
 
 export const DownloadButton = () => {
   const { control } = useFormContext<TValues>();
