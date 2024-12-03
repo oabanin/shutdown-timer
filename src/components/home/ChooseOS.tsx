@@ -35,11 +35,11 @@ export default function ChooseOS() {
             control={<Radio />}
             label="MacOS"
           />
-          <FormControlLabel
-            value={OS.LINUX}
-            control={<Radio />}
-            label="Linux"
-          />
+          {/*<FormControlLabel*/}
+          {/*  value={OS.LINUX}*/}
+          {/*  control={<Radio />}*/}
+          {/*  label="Linux"*/}
+          {/*/>*/}
         </RadioGroup>
       </FormControl>
     </fieldset>

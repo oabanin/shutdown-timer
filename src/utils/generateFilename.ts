@@ -1,7 +1,7 @@
 import { CustomTime, OS, Time } from "@/const/const";
 import { getEnumName } from "@/utils/getEnumName";
 import { isEnumValue } from "@/utils/isEnumValue";
-import { TValues } from "@/types";
+import { TGenerateFilename, TValues } from "@/types";
 import dayjs, { Dayjs } from "dayjs";
 
 export const generateFilename = ({
@@ -11,7 +11,7 @@ export const generateFilename = ({
   date,
   seconds,
   minutes,
-}: Omit<TValues, "cmd" | "filename">) => {
+}: TGenerateFilename) => {
   const isMacOS = os === OS.MACOS;
   let timeName;
   if (isEnumValue(time, Time)) {

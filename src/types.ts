@@ -8,9 +8,13 @@ export type TValues = {
   seconds: string;
   minutes: string;
   os: OS;
+  isForced: boolean;
+  isOneLine: boolean;
 
   cmd: string;
   filename: string;
 };
 
 export type GenerateValues = Omit<TValues, "cmd" | "filename">;
+
+export type TGenerateFilename = Omit<TValues, "cmd" | "filename" | "isForced">;

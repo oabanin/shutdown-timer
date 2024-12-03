@@ -19,19 +19,9 @@ export const getCMDMacOS = ({
     case Action.sleep:
       return `${sudoShutdown} -s +${secondsToAction}sec`;
     case Action.lock:
-      return "";
+      return `sleep ${secondsToAction} && /System/Library/CoreServices/Menu\\ Extras/User.menu/Contents/Resources/CGSession -suspend`;
     case Action.hibernate:
-      return "";
+      return `sudo pmset -a hibernatemode 25 standbydelayhigh ${secondsToAction} standbydelaylow ${secondsToAction}`;
+    // return "sudo pmset hibernatemode 25; sudo pmset sleepnow";
   }
 };
-
-// if (secondsToAction === "0") {
-//   macOSTime = "now";
-// } else {
-//   if (secondsToActionNumber % 60 === 0) {
-//     macOSTime = (secondsToActionNumber / 60).toString();
-//   } else {
-//     isFloat = true;
-//   }
-//   macOSTime = "";
-// }

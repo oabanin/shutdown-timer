@@ -13,5 +13,9 @@ export const generate = (data: GenerateValues) => {
   if (isMacOS) {
     return getCMDMacOS({ secondsToAction, action: data.action });
   }
-  return getCMDWindows({ secondsToAction, action: data.action });
+  return getCMDWindows({
+    secondsToAction,
+    action: data.action,
+    isForced: data.isForced,
+  });
 };

@@ -1,17 +1,23 @@
 import * as React from "react";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import { useFormContext, useWatch } from "react-hook-form";
+import { TValues } from "@/types";
 
 export default function OneLineCommand() {
-  const [checked, setChecked] = React.useState(true);
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(event.target.checked);
+    setValue("isOneLine", event.target.checked);
   };
+
+  const { control, setValue } = useFormContext<TValues>();
+  const isOneLine = useWatch({
+    control,
+    name: "isOneLine",
+  });
 
   return (
     <FormControlLabel
-      control={<Checkbox checked={checked} onChange={handleChange} />}
+      control={<Checkbox checked={isOneLine} onChange={handleChange} />}
       label="One line command"
     />
   );

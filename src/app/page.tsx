@@ -10,16 +10,18 @@ import ChooseTime from "@/components/home/ChooseTIme/ChooseTime";
 import ChooseOS from "@/components/home/ChooseOS";
 import { TextFieldCopy } from "@/components/home/TextFieldCopy/TextFieldCopy";
 import { Action, getCategoryForOS, OS, Time } from "@/const/const";
-import ForcedShutdown from "@/components/home/ForcedShutdown";
+import Forced from "@/components/home/Forced";
 import { FormProvider, useForm } from "react-hook-form";
 import dayjs from "dayjs";
 import { TValues } from "@/types";
 import { UAParser } from "ua-parser-js";
-import { generate } from "@/utils/generate";
 import OneLineCommand from "@/components/home/OneLine";
 import { download } from "@/utils/download";
-import { DownloadButton } from "@/components/home/DownloadButton/DownloadButton";
+import { ActionButtons } from "@/components/home/ActionButtons/ActionButtons";
 import { FileName } from "@/components/home/Filename/FileName";
+
+//there are more
+//add languages
 
 //WINDOWS XP
 
@@ -28,6 +30,12 @@ import { FileName } from "@/components/home/Filename/FileName";
 // SLEEP DOESN"T WORK
 
 //shutdown /s /t 60
+
+//
+
+// What mode the notebook enters when you close the lid
+// Windows laptops enter sleep mode when the lid is closed, unless you change these settings
+// Differences between sleep and hybernate
 
 // /f – Force Close Applications:
 // * Not available in Windows XP. The system would display a prompt to save open files.
@@ -53,6 +61,8 @@ const defaultValues: TValues = {
   seconds: Time.twoHours.toString(),
   minutes: "120",
   os: OS.WINDOWS,
+  isForced: false,
+  isOneLine: false,
   filename: "",
   cmd: "",
 };
@@ -74,14 +84,9 @@ export default function Home() {
   }, []);
 
   const onSubmit = (data: TValues) => {
-    const cmd = generate(data);
-
     const isMacOS = data.os === OS.MACOS;
-
-    const extension = isMacOS ? "sh" : "bat";
     const prefix = isMacOS ? "#!/bin/bash\r\n" : "";
-
-    download(prefix + cmd, `test.${extension}`, "text/plain;charset=utf-8");
+    download(prefix + data.cmd, data.filename, "text/plain;charset=utf-8");
   };
   return (
     <FormProvider reset={reset} handleSubmit={handleSubmit} {...rest}>
@@ -104,7 +109,7 @@ export default function Home() {
             <div>
               <ChooseOS />
               <ChooseAction />
-              <ForcedShutdown />
+              <Forced />
               <OneLineCommand />
               <div>
                 <FileName />
@@ -120,7 +125,7 @@ export default function Home() {
           {/*<Copyright />*/}
 
           <TextFieldCopy />
-          <DownloadButton />
+          <ActionButtons />
         </Container>
       </form>
     </FormProvider>
