@@ -57,6 +57,11 @@ export default function ChooseAction() {
               control={<Radio />}
               label="Lock"
             />
+            <FormControlLabel
+              value={Action.abort}
+              control={<Radio />}
+              label="Abort"
+            />
           </Box>
         </RadioGroup>
       </FormControl>

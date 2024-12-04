@@ -5,6 +5,7 @@ export enum Action {
   hibernate = "hibernate",
   logout = "logout",
   lock = "lock",
+  abort = "abort",
 }
 
 export enum Time {

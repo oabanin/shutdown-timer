@@ -2,18 +2,23 @@ import { Action } from "@/const/const";
 
 const shutdown = "shutdown";
 const timeout = "timeout /t";
-const nobreakRundll32 = "/nobreak\r\nrundll32.exe";
+const newLine = "\r\n";
+const rundll32 = "rundll32.exe";
+const nobreak = "/nobreak";
 
 export const getCMDWindows = ({
   action,
   secondsToAction,
   isForced,
+  isOneLine,
 }: {
   action: Action;
   secondsToAction: string;
   isForced: boolean;
+  isOneLine: boolean;
 }) => {
   const f = isForced ? "/f" : "";
+  const nobreakRundll32 = `${nobreak}${isOneLine ? " & " : newLine}${rundll32}`;
 
   switch (action) {
     case Action.shutdown:
@@ -28,6 +33,8 @@ export const getCMDWindows = ({
       return `${timeout} ${secondsToAction} ${nobreakRundll32} powrprof.dll,SetSuspendState Sleep`;
     case Action.hibernate:
       return `${shutdown} /h ${f} /t ${secondsToAction}`;
+    case Action.abort:
+      return `${shutdown} /a`;
     // case Action.hibernate:
     //   return `${timeout} ${secondsToAction} ${nobreakRundll32} powrprof.dll,SetSuspendState Hibernate`;
   }

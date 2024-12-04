@@ -18,6 +18,8 @@ export const getCMDMacOS = ({
       return `${sudoShutdown} -k +${secondsToAction}sec`;
     case Action.sleep:
       return `${sudoShutdown} -s +${secondsToAction}sec`;
+    case Action.abort:
+      return `sudo killall shutdown`;
     case Action.lock:
       return `sleep ${secondsToAction} && /System/Library/CoreServices/Menu\\ Extras/User.menu/Contents/Resources/CGSession -suspend`;
     case Action.hibernate:

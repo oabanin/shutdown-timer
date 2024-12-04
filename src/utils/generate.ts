@@ -17,5 +17,6 @@ export const generate = (data: GenerateValues) => {
     secondsToAction,
     action: data.action,
     isForced: data.isForced,
+    isOneLine: data.isOneLine,
   });
 };
