@@ -20,8 +20,10 @@ import { download } from "@/utils/download";
 import { ActionButtons } from "@/components/home/ActionButtons/ActionButtons";
 import { FileName } from "@/components/home/Filename/FileName";
 
-//there are more
-//add languages
+//abort command
+
+//there are more commands
+//add translations
 
 //WINDOWS XP
 
