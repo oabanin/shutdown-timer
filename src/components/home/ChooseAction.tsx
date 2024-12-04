@@ -7,6 +7,8 @@ import FormControl from "@mui/material/FormControl";
 import { Action } from "@/const/const";
 import { useFormContext, useWatch } from "react-hook-form";
 import Box from "@mui/material/Box";
+import Tooltip from "@mui/material/Tooltip";
+import HelpIcon from "@mui/icons-material/Help";
 
 export default function ChooseAction() {
   const { control, setValue } = useFormContext();
@@ -60,7 +62,17 @@ export default function ChooseAction() {
             <FormControlLabel
               value={Action.abort}
               control={<Radio />}
-              label="Abort"
+              label={
+                <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                  Abort
+                  <Tooltip
+                    title="Forces running applications to close without warning"
+                    arrow
+                  >
+                    <HelpIcon fontSize="small" color="action" />
+                  </Tooltip>
+                </Box>
+              }
             />
           </Box>
         </RadioGroup>
