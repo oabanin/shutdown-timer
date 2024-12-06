@@ -94,7 +94,7 @@ export default function Home() {
     <FormProvider reset={reset} handleSubmit={handleSubmit} {...rest}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Container maxWidth="lg">
-          <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
+          <Typography variant="h4" component="h1" sx={{ mb: 1 }}>
             Shutdown timer
           </Typography>
           <Box
@@ -110,14 +110,20 @@ export default function Home() {
           >
             <div>
               <ChooseOS />
+            </div>
+            <div>
               <ChooseAction />
-              <Forced />
-              <OneLineCommand />
+              <div>
+                <Forced />
+                <OneLineCommand />
+              </div>
               <div>
                 <FileName />
               </div>
             </div>
-            <ChooseTime />
+            <div>
+              <ChooseTime />
+            </div>
           </Box>
 
           {/*<Link href="/about" color="secondary" component={NextLink}>*/}
