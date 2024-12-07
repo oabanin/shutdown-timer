@@ -61,3 +61,8 @@ export function getCategoryForOS(os?: string): OS | undefined {
   }
   return;
 }
+
+export enum NewLine {
+  win = "\r\n",
+  masOs = "\n",
+}

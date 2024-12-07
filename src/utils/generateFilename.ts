@@ -1,7 +1,7 @@
-import { CustomTime, OS, Time } from "@/const/const";
+import { Action, CustomTime, OS, Time } from "@/const/const";
 import { getEnumName } from "@/utils/getEnumName";
 import { isEnumValue } from "@/utils/isEnumValue";
-import { TGenerateFilename, TValues } from "@/types";
+import { TGenerateFilename } from "@/types";
 import dayjs, { Dayjs } from "dayjs";
 
 export const generateFilename = ({
@@ -34,7 +34,11 @@ export const generateFilename = ({
     }
   }
 
-  return `${action}_${timeName || ""}${isMacOS ? ".sh" : ".bat"}`;
+  const isAbortAction = action === Action.abort;
+  const timeSuffix = isAbortAction ? "" : `_${timeName || ""}`;
+  const extension = isMacOS ? ".command" : ".bat";
+
+  return `${action}${timeSuffix}${extension}`;
 };
 
 const formatToLocaleTime = (date: Dayjs): string => {

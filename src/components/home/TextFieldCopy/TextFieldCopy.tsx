@@ -5,7 +5,7 @@ import { useFormContext, useWatch } from "react-hook-form";
 import s from "./TextFieldCopy.module.scss";
 
 import { GenerateValues, TValues } from "@/types";
-import { TextField } from "@mui/material";
+import { TextareaAutosize } from "@mui/material";
 import { useEffect } from "react";
 
 export const TextFieldCopy = () => {
@@ -46,17 +46,18 @@ export const TextFieldCopy = () => {
 
   return (
     <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
-      <TextField
-        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+      <TextareaAutosize
+        //label="Command"
+        onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
           setValue("cmd", event.target.value, {
             shouldTouch: true,
           });
         }}
         className={s.textarea}
-        multiline
-        rows={3}
+        //multiline
+        minRows={3}
         value={cmd}
-      ></TextField>
+      ></TextareaAutosize>
     </Box>
   );
 };

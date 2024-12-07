@@ -65,12 +65,12 @@ export default function ChooseAction() {
               label={
                 <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
                   Abort
-                  <Tooltip
-                    title="Forces running applications to close without warning"
-                    arrow
-                  >
-                    <HelpIcon fontSize="small" color="action" />
-                  </Tooltip>
+                  {/*<Tooltip*/}
+                  {/*  title="Forces running applications to close without warning"*/}
+                  {/*  arrow*/}
+                  {/*>*/}
+                  {/*  <HelpIcon fontSize="small" color="action" />*/}
+                  {/*</Tooltip>*/}
                 </Box>
               }
             />

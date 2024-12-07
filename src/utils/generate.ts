@@ -11,7 +11,11 @@ export const generate = (data: GenerateValues) => {
   const secondsToAction = getSecondsToAction(data);
 
   if (isMacOS) {
-    return getCMDMacOS({ secondsToAction, action: data.action });
+    return getCMDMacOS({
+      secondsToAction,
+      action: data.action,
+      isOneLine: data.isOneLine,
+    });
   }
   return getCMDWindows({
     secondsToAction,

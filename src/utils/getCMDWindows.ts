@@ -1,8 +1,7 @@
-import { Action } from "@/const/const";
+import { Action, NewLine } from "@/const/const";
 
 const shutdown = "shutdown";
 const timeout = "timeout /t";
-const newLine = "\r\n";
 const rundll32 = "rundll32.exe";
 const nobreak = "/nobreak";
 
@@ -18,7 +17,7 @@ export const getCMDWindows = ({
   isOneLine: boolean;
 }) => {
   const f = isForced ? "/f" : "";
-  const nobreakRundll32 = `${nobreak}${isOneLine ? " & " : newLine}${rundll32}`;
+  const nobreakRundll32 = `${nobreak}${isOneLine ? " & " : NewLine.win}${rundll32}`;
 
   switch (action) {
     case Action.shutdown:

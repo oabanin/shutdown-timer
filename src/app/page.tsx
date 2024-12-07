@@ -1,7 +1,6 @@
 "use client";
 import * as React from "react";
 import { useEffect } from "react";
-import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
@@ -9,7 +8,7 @@ import ChooseAction from "@/components/home/ChooseAction";
 import ChooseTime from "@/components/home/ChooseTIme/ChooseTime";
 import ChooseOS from "@/components/home/ChooseOS";
 import { TextFieldCopy } from "@/components/home/TextFieldCopy/TextFieldCopy";
-import { Action, getCategoryForOS, OS, Time } from "@/const/const";
+import { Action, getCategoryForOS, NewLine, OS, Time } from "@/const/const";
 import Forced from "@/components/home/Forced";
 import { FormProvider, useForm } from "react-hook-form";
 import dayjs from "dayjs";
@@ -20,6 +19,13 @@ import { download } from "@/utils/download";
 import { ActionButtons } from "@/components/home/ActionButtons/ActionButtons";
 import { FileName } from "@/components/home/Filename/FileName";
 
+// Добавить таймер обратного отсчета
+
+// Optional: Automate with No Password Prompt
+// sudo visudo
+//yourusername ALL=(ALL) NOPASSWD: /usr/bin/pmset
+
+//Grant Permissions for GUI Automation
 //abort command
 
 //there are more commands
@@ -87,13 +93,13 @@ export default function Home() {
 
   const onSubmit = (data: TValues) => {
     const isMacOS = data.os === OS.MACOS;
-    const prefix = isMacOS ? "#!/bin/bash\r\n" : "";
+    const prefix = isMacOS ? `#!/bin/bash${NewLine.masOs}` : "";
     download(prefix + data.cmd, data.filename, "text/plain;charset=utf-8");
   };
   return (
-    <FormProvider reset={reset} handleSubmit={handleSubmit} {...rest}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Container maxWidth="lg">
+    <>
+      <FormProvider reset={reset} handleSubmit={handleSubmit} {...rest}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Typography variant="h4" component="h1" sx={{ mb: 1 }}>
             Shutdown timer
           </Typography>
@@ -125,17 +131,27 @@ export default function Home() {
               <ChooseTime />
             </div>
           </Box>
-
-          {/*<Link href="/about" color="secondary" component={NextLink}>*/}
-          {/*  Go to the about page*/}
-          {/*</Link>*/}
-          {/*<ProTip />*/}
-          {/*<Copyright />*/}
-
           <TextFieldCopy />
           <ActionButtons />
-        </Container>
-      </form>
-    </FormProvider>
+        </form>
+      </FormProvider>
+      <Box
+        sx={{
+          my: 4,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Typography component="p" sx={{ mb: 2 }}>
+          Easily generate a custom batch file for scheduling shutdowns,
+          restarts, or log-offs on your Windows device in just seconds. No
+          coding required—simply choose your desired action and set the timer,
+          and our tool will create the file for you. Perfect for automating
+          power management with simplicity and precision.
+        </Typography>
+      </Box>
+    </>
   );
 }
