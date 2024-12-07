@@ -17,4 +17,7 @@ export type TValues = {
 
 export type GenerateValues = Omit<TValues, "cmd" | "filename">;
 
-export type TGenerateFilename = Omit<TValues, "cmd" | "filename" | "isForced">;
+export type TGenerateFilename = Omit<
+  TValues,
+  "cmd" | "filename" | "isForced" | "isOneLine"
+>;
