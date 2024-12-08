@@ -19,6 +19,10 @@ import { download } from "@/utils/download";
 import { ActionButtons } from "@/components/home/ActionButtons/ActionButtons";
 import { FileName } from "@/components/home/Filename/FileName";
 
+import { AlertMacOs } from "@/components/home/AlertMacOs";
+import { SnackbarProvider } from "@/context/SnackbarContext";
+
+//  Увеличить размер текста tooltip
 // Добавить таймер обратного отсчета
 
 // Optional: Automate with No Password Prompt
@@ -97,7 +101,7 @@ export default function Home() {
     download(prefix + data.cmd, data.filename, "text/plain;charset=utf-8");
   };
   return (
-    <>
+    <SnackbarProvider>
       <FormProvider reset={reset} handleSubmit={handleSubmit} {...rest}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Typography variant="h4" component="h1" sx={{ mb: 1 }}>
@@ -132,6 +136,7 @@ export default function Home() {
             </div>
           </Box>
           <TextFieldCopy />
+          <AlertMacOs />
           <ActionButtons />
         </form>
       </FormProvider>
@@ -152,6 +157,6 @@ export default function Home() {
           power management with simplicity and precision.
         </Typography>
       </Box>
-    </>
+    </SnackbarProvider>
   );
 }

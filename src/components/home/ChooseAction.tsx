@@ -4,7 +4,7 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import { Action } from "@/const/const";
+import { Action, OS } from "@/const/const";
 import { useFormContext, useWatch } from "react-hook-form";
 import Box from "@mui/material/Box";
 
@@ -16,23 +16,26 @@ export default function ChooseAction() {
     setValue("action", value as Action);
   };
 
-  const firstName = useWatch({
+  const [action, os] = useWatch({
     control,
-    name: "action",
+    name: ["action", "os"],
   });
+
+  const isMac = os === OS.MACOS;
 
   return (
     <fieldset>
       <legend>Choose action</legend>
       <FormControl>
-        <RadioGroup value={firstName} onChange={handleChange}>
+        <RadioGroup value={action} onChange={handleChange}>
           <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
             <FormControlLabel
               value={Action.shutdown}
               control={<Radio />}
-              label="Shutdown"
+              label={<>Shutdown</>}
             />
             <FormControlLabel
+              disabled={isMac}
               value={Action.hibernate}
               control={<Radio />}
               label="Hibernate"
@@ -58,17 +61,20 @@ export default function ChooseAction() {
               label="Lock"
             />
             <FormControlLabel
+              disabled={isMac}
               value={Action.abort}
               control={<Radio />}
               label={
                 <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
                   Abort
-                  {/*<Tooltip*/}
-                  {/*  title="Forces running applications to close without warning"*/}
-                  {/*  arrow*/}
-                  {/*>*/}
-                  {/*  <HelpIcon fontSize="small" color="action" />*/}
-                  {/*</Tooltip>*/}
+                  {/*{isMac && (*/}
+                  {/*  <Tooltip*/}
+                  {/*    title="Can abort only restart, shutdown, and sleep on macOS. Logout or Lock can be cancelled by closing the terminal"*/}
+                  {/*    arrow*/}
+                  {/*  >*/}
+                  {/*    <HelpIcon fontSize="small" color="action" />*/}
+                  {/*  </Tooltip>*/}
+                  {/*)}*/}
                 </Box>
               }
             />

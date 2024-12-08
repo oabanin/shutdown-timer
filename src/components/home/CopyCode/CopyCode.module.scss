@@ -1,0 +1,15 @@
+.button {
+  width: min-content;
+  padding: 2px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  border-radius: var(--mui-shape-borderRadius);
+  border-color: rgba(var(--mui-palette-primary-mainChannel) / 0.5);
+  border-width: 1px;
+
+  cursor: pointer;
+}

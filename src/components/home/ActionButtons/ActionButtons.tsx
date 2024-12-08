@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import s from "@/components/home/TextFieldCopy/TextFieldCopy.module.scss";
 import { useFormContext, useWatch } from "react-hook-form";
 import { TValues } from "@/types";
-import { Alert, Snackbar, SnackbarCloseReason } from "@mui/material";
+import { useCopyAndNotify } from "@/hooks/useCopyAndNotify";
 
 export const ActionButtons = () => {
   const { control } = useFormContext<TValues>();
@@ -12,28 +12,10 @@ export const ActionButtons = () => {
     control,
     name: "cmd",
   });
-  const [open, setOpen] = React.useState(false);
-
-  const handleClose = (
-    event?: React.SyntheticEvent | Event,
-    reason?: SnackbarCloseReason,
-  ) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setOpen(false);
-  };
+  const { copyToClipboard } = useCopyAndNotify();
 
   const handleCopy = () => {
-    navigator.clipboard
-      .writeText(cmd)
-      .then(() => {
-        setOpen(true);
-      })
-      .catch((err) => {
-        console.error("Error copying text to clipboard:", err);
-      });
+    copyToClipboard(cmd);
   };
 
   return (
@@ -60,16 +42,6 @@ export const ActionButtons = () => {
           Download file
         </Button>
       </Box>
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert
-          onClose={handleClose}
-          severity="success"
-          variant="filled"
-          sx={{ width: "100%" }}
-        >
-          Successfully copied
-        </Alert>
-      </Snackbar>
     </>
   );
 };
