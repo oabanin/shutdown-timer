@@ -22,6 +22,12 @@ import { FileName } from "@/components/home/Filename/FileName";
 import { AlertMacOs } from "@/components/home/AlertMacOs";
 import { SnackbarProvider } from "@/context/SnackbarContext";
 
+///PowerShell commands
+//.ps1
+
+// opengraph-image.jpg and twitter-image.jpg: Employed for social media images
+// robots.txt: Provides instructions for search engine crawling
+
 //  Увеличить размер текста tooltip
 // Добавить таймер обратного отсчета
 

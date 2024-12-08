@@ -22,7 +22,7 @@ export const getCMDMacOS = ({
     case Action.shutdown:
       return (
         `${sudoShutdown} -h +${secondsToAction}sec${connector}` +
-        `osascript -e 'display notification "The computer will shutdown ${formattedInterval}." with title "Shutdown Notice"'`
+        `osascript -e 'display notification "The computer will shutdown ${formattedInterval}" with title "Shutdown Notice"'`
       );
     case Action.restart:
       return (
