@@ -15,6 +15,7 @@ export default function Forced() {
   });
 
   const isWindows = os === OS.WINDOWS;
+  const isMacOs = os === OS.MACOS;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue("isForced", event.target.checked);
@@ -28,7 +29,12 @@ export default function Forced() {
         <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
           Forced
           <Tooltip
-            title="Forces running applications to close without warning"
+            sx={{ opacity: isMacOs ? 0.4 : 1 }}
+            disableFocusListener={isMacOs}
+            disableHoverListener={isMacOs}
+            disableInteractive={isMacOs}
+            disableTouchListener={isMacOs}
+            title="Forces the system to restart, shut down, log out, or hibernate, even if there are running applications with unsaved data or if an application is blocking the action"
             arrow
           >
             <HelpIcon fontSize="small" color="action" />

@@ -7,6 +7,8 @@ import FormControl from "@mui/material/FormControl";
 import { Action, OS } from "@/const/const";
 import { useFormContext, useWatch } from "react-hook-form";
 import Box from "@mui/material/Box";
+import Tooltip from "@mui/material/Tooltip";
+import HelpIcon from "@mui/icons-material/Help";
 
 export default function ChooseAction() {
   const { control, setValue } = useFormContext();
@@ -67,14 +69,17 @@ export default function ChooseAction() {
               label={
                 <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
                   Abort
-                  {/*{isMac && (*/}
-                  {/*  <Tooltip*/}
-                  {/*    title="Can abort only restart, shutdown, and sleep on macOS. Logout or Lock can be cancelled by closing the terminal"*/}
-                  {/*    arrow*/}
-                  {/*  >*/}
-                  {/*    <HelpIcon fontSize="small" color="action" />*/}
-                  {/*  </Tooltip>*/}
-                  {/*)}*/}
+                  <Tooltip
+                    sx={{ opacity: isMac ? 0.4 : 1 }}
+                    disableFocusListener={isMac}
+                    disableHoverListener={isMac}
+                    disableInteractive={isMac}
+                    disableTouchListener={isMac}
+                    title="Can only abort restart and shutdown. Other actions can be canceled by closing the command window"
+                    arrow
+                  >
+                    <HelpIcon fontSize="small" color="action" />
+                  </Tooltip>
                 </Box>
               }
             />
