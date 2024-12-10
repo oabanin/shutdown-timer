@@ -7,13 +7,13 @@ export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://shutdowtimer.com",
+      url: "https://shutdown-timer.com",
       lastModified: today,
       changeFrequency: "yearly",
       priority: 1,
     },
     {
-      url: "https://shutdowtimer.com/faq",
+      url: "https://shutdown-timer.com/faq",
       lastModified: today,
       changeFrequency: "monthly",
       priority: 0.8,
