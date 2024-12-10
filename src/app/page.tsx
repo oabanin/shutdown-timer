@@ -114,12 +114,12 @@ export default function Home() {
     <>
       <Head>
         <title>
-          Power Command Builder for Windows & MacOS: Shutdown, Restart, Sleep,
-          and More
+          Power Command Builder for Windows 10/11 & MacOS: Shutdown, Restart,
+          Sleep, and More
         </title>
         <meta
           name="description"
-          content="Create custom commands for shutdown, restart, sleep, hibernate, and more with Power Command Builder for Windows & MacOS. Simple, fast, and versatile—manage your system actions effortlessly."
+          content="Create custom commands for shutdown, restart, sleep, hibernate, and more with Power Command Builder for Windows 10/11 & MacOS. Simple, fast, and versatile—manage your system actions effortlessly."
         />
       </Head>
       <SnackbarProvider>

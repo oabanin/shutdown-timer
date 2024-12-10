@@ -106,6 +106,10 @@ export default function FAQ() {
     <>
       <Head>
         <title>Frequently Asked Questions About Power Command Builder</title>
+        <meta
+          name="description"
+          content="Learn how to create commands for shutdown, restart, sleep, and more on Windows 10/11 & MacOS with our comprehensive FAQ."
+        />
       </Head>
       <Container maxWidth="lg">
         <Box
