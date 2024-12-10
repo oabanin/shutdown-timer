@@ -12,8 +12,8 @@ export default function Copyright() {
       }}
     >
       {"Copyright © "}
-      <MuiLink color="inherit" href="https://shutdowntimer.com/">
-        shutdowntimer.com
+      <MuiLink color="inherit" href="https://shutdown-timer.com/">
+        shutdown-timer.com
       </MuiLink>{" "}
       {new Date().getFullYear()}.
     </Typography>
