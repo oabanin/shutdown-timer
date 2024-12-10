@@ -171,11 +171,17 @@ export default function Home() {
           }}
         >
           <Typography component="p" sx={{ mb: 2 }}>
-            Easily generate a custom batch file for scheduling shutdowns,
-            restarts, or log-offs on your Windows device in just seconds. No
-            coding required—simply choose your desired action and set the timer,
-            and our tool will create the file for you. Perfect for automating
-            power management with simplicity and precision.
+            Easily generate custom commands for scheduling shutdowns, restarts,
+            sleep, hibernation, log-offs, and more for both{" "}
+            <b>Windows Vista7/8/10/11</b> and <b>MacOS</b> in just seconds.
+          </Typography>
+          <Typography component="p" sx={{ mb: 2 }}>
+            No coding required—simply choose your desired action, set the timer,
+            and our tool will generate the command for you. You can either{" "}
+            <b>copy the command</b> to your clipboard or download it as a{" "}
+            <b>.bat (Windows)</b> or <b>.command (MacOS)</b> file for easy
+            execution. Perfect for automating power management with simplicity
+            and precision on both platforms.
           </Typography>
         </Box>
       </SnackbarProvider>
