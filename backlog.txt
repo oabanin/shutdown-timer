@@ -1,4 +1,9 @@
 add save as shortcut
+https://www.npmjs.com/package/create-desktop-shortcuts
+
+
+google analytics
+add table
 
 //add not found
 
