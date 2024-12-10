@@ -22,6 +22,8 @@ import { FileName } from "@/components/home/Filename/FileName";
 import { AlertMacOs } from "@/components/home/AlertMacOs";
 import { SnackbarProvider } from "@/context/SnackbarContext";
 
+//add not found
+
 //сделать хуки isMAc os, is windows
 
 ///PowerShell commands
