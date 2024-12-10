@@ -12,10 +12,6 @@ export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
-        <title>
-          Power Command Builder for Windows & MacOS: Shutdown, Restart, Sleep,
-          and More
-        </title>
         <Favicons />
       </head>
       <body>
