@@ -18,7 +18,6 @@ import OneLineCommand from "@/components/home/OneLine";
 import { download } from "@/utils/download";
 import { ActionButtons } from "@/components/home/ActionButtons/ActionButtons";
 import { FileName } from "@/components/home/Filename/FileName";
-import Head from "next/head";
 import { AlertMacOs } from "@/components/home/AlertMacOs";
 import { SnackbarProvider } from "@/context/SnackbarContext";
 
@@ -112,16 +111,6 @@ export default function Home() {
   };
   return (
     <>
-      <Head>
-        <title>
-          Power Command Builder for Windows 10/11 & MacOS: Shutdown, Restart,
-          Sleep, and More
-        </title>
-        <meta
-          name="description"
-          content="Create custom commands for shutdown, restart, sleep, hibernate, and more with Power Command Builder for Windows 10/11 & MacOS. Copy commands or download .bat and .command files for easy use."
-        />
-      </Head>
       <SnackbarProvider>
         <FormProvider reset={reset} handleSubmit={handleSubmit} {...rest}>
           <form onSubmit={handleSubmit(onSubmit)}>

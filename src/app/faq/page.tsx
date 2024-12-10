@@ -3,7 +3,13 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Copyright from "@/components/Copyright";
-import Head from "next/head";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Frequently Asked Questions About Power Command Builder",
+  description:
+    "Learn how to create commands for shutdown, restart, sleep, and more on Windows 10/11 & MacOS with our comprehensive FAQ.",
+};
 
 const faqData = [
   {
@@ -104,13 +110,6 @@ const faqData = [
 export default function FAQ() {
   return (
     <>
-      <Head>
-        <title>Frequently Asked Questions About Power Command Builder</title>
-        <meta
-          name="description"
-          content="Learn how to create commands for shutdown, restart, sleep, and more on Windows 10/11 & MacOS with our comprehensive FAQ."
-        />
-      </Head>
       <Container maxWidth="lg">
         <Box
           sx={{
