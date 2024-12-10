@@ -21,60 +21,6 @@ import { FileName } from "@/components/home/Filename/FileName";
 import { AlertMacOs } from "@/components/home/AlertMacOs";
 import { SnackbarProvider } from "@/context/SnackbarContext";
 
-//add not found
-
-//сделать хуки isMAc os, is windows
-
-///PowerShell commands
-//.ps1
-
-// opengraph-image.jpg and twitter-image.jpg: Employed for social media images
-// robots.txt: Provides instructions for search engine crawling
-
-//  Увеличить размер текста tooltip
-// Добавить таймер обратного отсчета
-
-// Optional: Automate with No Password Prompt
-// sudo visudo
-//yourusername ALL=(ALL) NOPASSWD: /usr/bin/pmset
-
-//Grant Permissions for GUI Automation
-//abort command
-
-//there are more commands
-//add translations
-
-//WINDOWS XP
-
-//shutdown /l LOGOUT
-
-// SLEEP DOESN"T WORK
-
-//shutdown /s /t 60
-
-//
-
-// What mode the notebook enters when you close the lid
-// Windows laptops enter sleep mode when the lid is closed, unless you change these settings
-// Differences between sleep and hybernate
-
-// /f – Force Close Applications:
-// * Not available in Windows XP. The system would display a prompt to save open files.
-// /a – Abort:
-// * Not available in Windows XP. There was no option to cancel a scheduled shutdown once it had been initiated.
-// /c – Comment:
-// * Not available in Windows XP. The ability to add a custom comment during shutdown was introduced in later versions of Windows (starting with Windows Vista).
-
-// /f - Force Close shutdown /s /f /t 0
-// shutdown /a (cancel a shutdown) ABORT. shutdown /s /f /t 0
-// add comment shutdown /s /t 30 /c "Shutting down for updates."
-// SAVE to Local storage last value
-// add Native Messaging API extension
-// check node_modules/ua-parser-js/src/enums/ua-parser-enums.mjs
-
-// IF Hibernate doesn't work check our article
-// Hibernate
-
 const defaultValues: TValues = {
   action: Action.shutdown,
   time: Time.twoHours.toString(),
