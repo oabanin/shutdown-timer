@@ -12,7 +12,10 @@ export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
-        <title>Shutdown timer</title>
+        <title>
+          Power Command Builder for Windows & MacOS: Shutdown, Restart, Sleep,
+          and More
+        </title>
         <Favicons />
       </head>
       <body>

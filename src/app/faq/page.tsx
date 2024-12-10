@@ -105,7 +105,7 @@ export default function FAQ() {
   return (
     <>
       <Head>
-        <title>FAQ | Shutdown timer</title>
+        <title>Frequently Asked Questions About Power Command Builder</title>
       </Head>
       <Container maxWidth="lg">
         <Box
