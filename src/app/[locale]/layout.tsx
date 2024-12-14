@@ -1,12 +1,5 @@
 import * as React from "react";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
-import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
-import theme from "../../theme";
 import "../../styles/global.css";
-import AppBar from "@/components/AppBar";
-import { Favicons } from "@/app/[locale]/Favicons";
-import Container from "@mui/material/Container";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -17,9 +10,9 @@ export const metadata: Metadata = {
 };
 
 import { notFound } from "next/navigation";
-import { NextIntlClientProvider } from "next-intl";
 import { locales, routing } from "@/i18n/routing";
 import { getMessages, setRequestLocale } from "next-intl/server";
+import { HomePageLayout } from "@/app/HomePageLayout";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -27,12 +20,13 @@ export function generateStaticParams() {
 
 export default async function RootLayout({
   children,
-  params: { locale },
+  params,
 }: {
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  // Ensure that the incoming `locale` is valid
+  const { locale } = await Promise.resolve(params);
+
   if (!locales.includes(locale)) {
     notFound();
   }
@@ -42,21 +36,8 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
-      <head>
-        <Favicons />
-      </head>
-      <body>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-            <ThemeProvider theme={theme}>
-              <CssBaseline />
-              <AppBar />
-              <Container maxWidth="lg">{children}</Container>
-            </ThemeProvider>
-          </AppRouterCacheProvider>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <HomePageLayout locale={locale} messages={messages}>
+      {children}
+    </HomePageLayout>
   );
 }

@@ -16,6 +16,7 @@ import s from "./ChooseTime.module.scss";
 // import dayjs from "dayjs";
 // import duration from "dayjs/plugin/duration";
 import { formatDuration } from "@/utils/formatDuration";
+import { useTranslations } from "next-intl";
 // dayjs.extend(duration);
 
 export default function ChooseTime() {
@@ -47,62 +48,64 @@ export default function ChooseTime() {
     }
   };
 
+  const t = useTranslations();
+
   return (
     <fieldset>
-      <legend>Choose time</legend>
+      <legend>{t("chooseTime")}</legend>
       <FormControl>
         <RadioGroup value={selected} onChange={handleSelectedChange}>
           <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
             <FormControlLabel
               value={Time.immediate}
               control={<Radio />}
-              label="Immediate"
+              label={t("immediate")}
             />
             <FormControlLabel
               value={Time.twoHours}
               control={<Radio />}
-              label="2 hours"
+              label={t("twoHours")}
             />
             <FormControlLabel
               value={Time.tenMinutes}
               control={<Radio />}
-              label="10 minutes"
+              label={t("tenMinutes")}
             />
             <FormControlLabel
               value={Time.threeHours}
               control={<Radio />}
-              label="3 hours"
+              label={t("threeHours")}
             />
             <FormControlLabel
               value={Time.twentyMinutes}
               control={<Radio />}
-              label="20 minutes"
+              label={t("twentyMinutes")}
             />
 
             <FormControlLabel
               value={Time.fourHours}
               control={<Radio />}
-              label="4 hours"
+              label={t("fourHours")}
             />
             <FormControlLabel
               value={Time.halfAnHour}
               control={<Radio />}
-              label="Half an hour"
+              label={t("halfAnHour")}
             />
             <FormControlLabel
               value={Time.fiveHours}
               control={<Radio />}
-              label="5 hours"
+              label={t("fiveHours")}
             />
             <FormControlLabel
               value={Time.oneHour}
               control={<Radio />}
-              label="1 hour"
+              label={t("oneHour")}
             />
             <FormControlLabel
               value={Time.sixHours}
               control={<Radio />}
-              label="6 hours"
+              label={t("sixHours")}
             />
           </Box>
 
@@ -138,7 +141,7 @@ export default function ChooseTime() {
             label={
               <div className={s.inputContainer}>
                 <TextField
-                  label="Minutes"
+                  label={t("minutes")}
                   variant="outlined"
                   value={minutes}
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
@@ -170,7 +173,7 @@ export default function ChooseTime() {
             label={
               <div className={s.inputContainer}>
                 <TextField
-                  label="Seconds"
+                  label={t("seconds")}
                   variant="outlined"
                   value={seconds}
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) => {

@@ -7,6 +7,7 @@ import * as React from "react";
 
 import { useEffect } from "react";
 import { generateFilename } from "@/utils/generateFilename";
+import { useTranslations } from "next-intl";
 
 export const FileName = () => {
   const { control, setValue, getFieldState } = useFormContext<TValues>();
@@ -24,7 +25,7 @@ export const FileName = () => {
     minutes,
     os,
   });
-
+  const t = useTranslations();
   useEffect(() => {
     if (!getFieldState("filename").isTouched) {
       setValue("filename", name);
@@ -39,7 +40,7 @@ export const FileName = () => {
         });
       }}
       sx={{ width: "100%" }}
-      label="Filename"
+      label={t("filename")}
       value={filename}
     ></TextField>
   );

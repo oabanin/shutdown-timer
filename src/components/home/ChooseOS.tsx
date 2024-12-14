@@ -6,10 +6,11 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import { OS } from "@/const/const";
 import { useFormContext, useWatch } from "react-hook-form";
+import { useTranslations } from "next-intl";
 
 export default function ChooseOS() {
   const { control, setValue } = useFormContext();
-
+  const t = useTranslations();
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = (event.target as HTMLInputElement).value;
     setValue("os", value as OS);
@@ -22,7 +23,7 @@ export default function ChooseOS() {
 
   return (
     <fieldset>
-      <legend>Choose OS</legend>
+      <legend>{t("chooseOs")}</legend>
       <FormControl>
         <RadioGroup value={os} onChange={handleChange}>
           <FormControlLabel

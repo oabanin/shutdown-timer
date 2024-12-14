@@ -9,6 +9,7 @@ import { useFormContext, useWatch } from "react-hook-form";
 import Box from "@mui/material/Box";
 import Tooltip from "@mui/material/Tooltip";
 import HelpIcon from "@mui/icons-material/Help";
+import { useTranslations } from "next-intl";
 
 export default function ChooseAction() {
   const { control, setValue } = useFormContext();
@@ -23,44 +24,46 @@ export default function ChooseAction() {
     name: ["action", "os"],
   });
 
+  const t = useTranslations();
+
   const isMac = os === OS.MACOS;
 
   return (
     <fieldset>
-      <legend>Choose action</legend>
+      <legend>{t("chooseAction")}</legend>
       <FormControl>
         <RadioGroup value={action} onChange={handleChange}>
           <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
             <FormControlLabel
               value={Action.shutdown}
               control={<Radio />}
-              label={<>Shutdown</>}
+              label={t("shutdown")}
             />
             <FormControlLabel
               disabled={isMac}
               value={Action.hibernate}
               control={<Radio />}
-              label="Hibernate"
+              label={t("hibernate")}
             />
             <FormControlLabel
               value={Action.restart}
               control={<Radio />}
-              label="Restart"
+              label={t("restart")}
             />
             <FormControlLabel
               value={Action.logout}
               control={<Radio />}
-              label="Logout"
+              label={t("logout")}
             />
             <FormControlLabel
               value={Action.sleep}
               control={<Radio />}
-              label="Sleep"
+              label={t("sleep")}
             />
             <FormControlLabel
               value={Action.lock}
               control={<Radio />}
-              label="Lock"
+              label={t("lock")}
             />
             <FormControlLabel
               disabled={isMac}

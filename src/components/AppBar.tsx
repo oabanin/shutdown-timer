@@ -15,16 +15,11 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-import Link from "next/link";
+import { Link, useRouter } from "src/i18n/routing";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const drawerWidth = 240;
-const navItems = [
-  { text: "Home", value: "/" },
-  // { text: "About", value: "/about" },
-  { text: "FAQ", value: "/faq" },
-  // { text: "Contact", value: "/contact" },
-];
 
 export default function DrawerAppBar() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -32,6 +27,16 @@ export default function DrawerAppBar() {
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
+  const router = useRouter();
+
+  const t = useTranslations();
+
+  const navItems = [
+    { text: t("home"), value: "/" },
+    // { text: "About", value: "/about" },
+    { text: t("faq"), value: "/faq" },
+    // { text: "Contact", value: "/contact" },
+  ];
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
@@ -41,7 +46,13 @@ export default function DrawerAppBar() {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item.value} disablePadding>
+          <ListItem
+            onClick={() => {
+              router.push(item.value);
+            }}
+            key={item.value}
+            disablePadding
+          >
             <ListItemButton sx={{ textAlign: "center" }}>
               <ListItemText primary={item.text} />
             </ListItemButton>
@@ -71,12 +82,7 @@ export default function DrawerAppBar() {
               sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
             >
               <Link href="/">
-                <Image
-                  alt="logo"
-                  width={65}
-                  height={50}
-                  src="./logo/logo.svg"
-                />
+                <Image alt="logo" width={65} height={50} src="/logo/logo.svg" />
               </Link>
             </Box>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>

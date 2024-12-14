@@ -7,13 +7,14 @@ import Tooltip from "@mui/material/Tooltip";
 import { useFormContext, useWatch } from "react-hook-form";
 import { TValues } from "@/types";
 import { OS } from "@/const/const";
+import { useTranslations } from "next-intl";
 export default function Forced() {
   const { control, setValue } = useFormContext<TValues>();
   const [isForced, os] = useWatch({
     control,
     name: ["isForced", "os"],
   });
-
+  const t = useTranslations();
   const isWindows = os === OS.WINDOWS;
   const isMacOs = os === OS.MACOS;
 
@@ -34,7 +35,7 @@ export default function Forced() {
             disableHoverListener={isMacOs}
             disableInteractive={isMacOs}
             disableTouchListener={isMacOs}
-            title="Forces the system to restart, shut down, log out, or hibernate, even if there are running applications with unsaved data or if an application is blocking the action"
+            title={t("forces")}
             arrow
           >
             <HelpIcon fontSize="small" color="action" />

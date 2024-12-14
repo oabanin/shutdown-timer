@@ -5,6 +5,7 @@ import s from "@/components/home/TextFieldCopy/TextFieldCopy.module.scss";
 import { useFormContext, useWatch } from "react-hook-form";
 import { TValues } from "@/types";
 import { useCopyAndNotify } from "@/hooks/useCopyAndNotify";
+import { useTranslations } from "next-intl";
 
 export const ActionButtons = () => {
   const { control } = useFormContext<TValues>();
@@ -13,7 +14,7 @@ export const ActionButtons = () => {
     name: "cmd",
   });
   const { copyToClipboard } = useCopyAndNotify();
-
+  const t = useTranslations();
   const handleCopy = () => {
     copyToClipboard(cmd);
   };
@@ -36,10 +37,10 @@ export const ActionButtons = () => {
           variant="outlined"
           size="large"
         >
-          Copy command
+          {t("copyCommand")}
         </Button>
         <Button type="submit" variant="contained" size="large">
-          Download file
+          {t("downloadFile")}
         </Button>
       </Box>
     </>
