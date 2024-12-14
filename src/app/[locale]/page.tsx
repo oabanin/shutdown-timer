@@ -20,6 +20,7 @@ import { ActionButtons } from "@/components/home/ActionButtons/ActionButtons";
 import { FileName } from "@/components/home/Filename/FileName";
 import { AlertMacOs } from "@/components/home/AlertMacOs";
 import { SnackbarProvider } from "@/context/SnackbarContext";
+import { useTranslations } from "next-intl";
 
 const defaultValues: TValues = {
   action: Action.shutdown,
@@ -36,6 +37,7 @@ const defaultValues: TValues = {
 
 export default function Home() {
   const { handleSubmit, reset, ...rest } = useForm({ defaultValues });
+  const t = useTranslations();
 
   useEffect(() => {
     const parser = new UAParser();
@@ -61,7 +63,7 @@ export default function Home() {
         <FormProvider reset={reset} handleSubmit={handleSubmit} {...rest}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Typography variant="h4" component="h1" sx={{ mb: 1 }}>
-              Shutdown timer
+              {t("shutdownTimer")}
             </Typography>
             <Box
               sx={{

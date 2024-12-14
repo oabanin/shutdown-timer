@@ -20,6 +20,7 @@
     "@mui/x-date-pickers": "^7.22.3",
     "dayjs": "^1.11.13",
     "next": "latest",
+    "next-intl": "^3.26.1",
     "react": "latest",
     "react-dom": "latest",
     "react-hook-form": "^7.53.2",
