@@ -74,5 +74,8 @@
   "homeTitle": "Generador de comandos de energía para Windows 10/11 y MacOS: Apagar, Reiniciar, Suspender y más",
   "homeDescription": "Crea comandos personalizados para apagar, reiniciar, suspender, hibernar y más con el Generador de comandos de energía para Windows 10/11 y MacOS. Copia comandos o descarga archivos .bat y .command para usarlos fácilmente.",
   "faqTitle": "Preguntas frecuentes sobre el Generador de comandos de energía",
-  "faqDescription": "Aprende cómo crear comandos para apagar, reiniciar, suspender y más en Windows 10/11 y MacOS con nuestras completas preguntas frecuentes."
+  "faqDescription": "Aprende cómo crear comandos para apagar, reiniciar, suspender y más en Windows 10/11 y MacOS con nuestras completas preguntas frecuentes.",
+  "whenDownloading": "Al descargar en macOS, asegúrate de ejecutar el siguiente comando en la Terminal",
+  "successfullyCopied": "¡Copiado con éxito!",
+  "failedToCopy": "No se pudo copiar el texto."
 }

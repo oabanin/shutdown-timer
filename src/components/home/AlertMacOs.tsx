@@ -4,6 +4,7 @@ import { useFormContext, useWatch } from "react-hook-form";
 import { TValues } from "@/types";
 import { OS } from "@/const/const";
 import { CopyCode } from "@/components/home/CopyCode/CopyCode";
+import { useTranslations } from "next-intl";
 
 export const AlertMacOs = () => {
   const { control } = useFormContext<TValues>();
@@ -12,7 +13,7 @@ export const AlertMacOs = () => {
     control,
     name: ["os", "filename"],
   });
-
+  const t = useTranslations();
   if (os === OS.WINDOWS) return null;
 
   return (
@@ -28,8 +29,8 @@ export const AlertMacOs = () => {
       variant="filled"
       severity="info"
     >
-      When downloading on macOS, be sure to run{" "}
-      <CopyCode code={`chmod +x ~/Downloads/${filename}`} /> in <b>Terminal</b>
+      {t("whenDownloading")}{" "}
+      <CopyCode code={`chmod +x ~/Downloads/${filename}`} />
     </Alert>
   );
 };
