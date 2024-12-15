@@ -1,14 +1,21 @@
-"use client";
 import * as React from "react";
 import "../styles/global.css";
-import { HomePageLayout } from "@/app/HomePageLayout";
-import { HomePageContent } from "@/app/HomePageContent";
-import messages from "../../messages/en.json";
+import { getTranslations } from "next-intl/server";
+import { Homepage } from "@/app/Homepage/Homepage";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const locale = params.locale || "en";
+  const t = await getTranslations({ locale });
+  return {
+    title: t("homeTitle"),
+    description: t("homeDescription"),
+  };
+}
 
 export default function Home() {
-  return (
-    <HomePageLayout locale="en" messages={messages}>
-      <HomePageContent />
-    </HomePageLayout>
-  );
+  return <Homepage />;
 }

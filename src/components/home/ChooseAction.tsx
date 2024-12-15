@@ -71,14 +71,14 @@ export default function ChooseAction() {
               control={<Radio />}
               label={
                 <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
-                  Abort
+                  {t("abort")}
                   <Tooltip
                     sx={{ opacity: isMac ? 0.4 : 1 }}
                     disableFocusListener={isMac}
                     disableHoverListener={isMac}
                     disableInteractive={isMac}
                     disableTouchListener={isMac}
-                    title="Can only abort restart and shutdown. Other actions can be canceled by closing the command window"
+                    title={t("canOnly")}
                     arrow
                   >
                     <HelpIcon fontSize="small" color="action" />

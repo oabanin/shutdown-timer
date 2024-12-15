@@ -15,19 +15,30 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-import { Link, useRouter } from "src/i18n/routing";
+import {
+  Link as LinkLocale,
+  useRouter as useRouterLocale,
+} from "src/i18n/routing";
+import Link from "next/link";
+
+import { useRouter } from "next/navigation";
+
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 const drawerWidth = 240;
 
-export default function DrawerAppBar() {
+export default function DrawerAppBar({ locale }: { locale: string }) {
+  const isDefaultLocale = locale === "en";
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
   const router = useRouter();
+  const routerLocale = useRouterLocale();
+
+  const LinkTag = isDefaultLocale ? Link : LinkLocale;
 
   const t = useTranslations();
 
@@ -48,7 +59,10 @@ export default function DrawerAppBar() {
         {navItems.map((item) => (
           <ListItem
             onClick={() => {
-              router.push(item.value);
+              if (isDefaultLocale) {
+                return router.push(item.value);
+              }
+              return routerLocale.push(item.value);
             }}
             key={item.value}
             disablePadding
@@ -81,9 +95,9 @@ export default function DrawerAppBar() {
               component="div"
               sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
             >
-              <Link href="/">
+              <LinkTag href="/">
                 <Image alt="logo" width={65} height={50} src="/logo/logo.svg" />
-              </Link>
+              </LinkTag>
             </Box>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
               {navItems.map((item) => (
@@ -91,7 +105,7 @@ export default function DrawerAppBar() {
                   key={item.value}
                   sx={{ color: "#fff" }}
                   // variant="contained"
-                  component={Link}
+                  component={LinkTag}
                   href={item.value}
                 >
                   {item.text}

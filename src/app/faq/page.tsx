@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { getTranslations } from "next-intl/server";
-import { HomePageLocale } from "@/app/[locale]/HomePageLocale";
+import { FaqPage } from "@/app/faq/FaqPage";
 
 export async function generateMetadata({
   params,
@@ -11,11 +11,11 @@ export async function generateMetadata({
   const locale = params.locale || "en";
   const t = await getTranslations({ locale });
   return {
-    title: t("homeTitle"),
-    description: t("homeDescription"),
+    title: t("faqTitle"),
+    description: t("faqDescription"),
   };
 }
 
-export default function Home() {
-  return <HomePageLocale />;
+export default function FAQ() {
+  return <FaqPage />;
 }

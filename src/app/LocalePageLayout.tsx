@@ -10,7 +10,7 @@ import AppBar from "@/components/AppBar";
 import Container from "@mui/material/Container";
 
 import { AbstractIntlMessages, NextIntlClientProvider } from "next-intl"; // Adjust this path to your messages file
-export const HomePageLayout = ({
+export const LocalePageLayout = ({
   children,
   locale,
   messages,
@@ -25,11 +25,15 @@ export const HomePageLayout = ({
         <Favicons />
       </head>
       <body>
-        <NextIntlClientProvider locale={locale} messages={messages}>
+        <NextIntlClientProvider
+          timeZone="America/New_York"
+          locale={locale}
+          messages={messages}
+        >
           <AppRouterCacheProvider options={{ enableCssLayer: true }}>
             <ThemeProvider theme={theme}>
               <CssBaseline />
-              <AppBar />
+              <AppBar locale={locale} />
               <Container maxWidth="lg">{children}</Container>
             </ThemeProvider>
           </AppRouterCacheProvider>

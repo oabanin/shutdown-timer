@@ -6,10 +6,6 @@ export const locales = ["en", "es"];
 export const routing = defineRouting({
   locales,
   defaultLocale: "en",
-  pathnames: {
-    "/": "/",
-    "/faq": "/faq",
-  },
 });
 
 // Lightweight wrappers around Next.js' navigation APIs

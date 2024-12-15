@@ -28,7 +28,7 @@ export default function Forced() {
       control={<Checkbox checked={isForced} onChange={handleChange} />}
       label={
         <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
-          Forced
+          {t("forced")}
           <Tooltip
             sx={{ opacity: isMacOs ? 0.4 : 1 }}
             disableFocusListener={isMacOs}
