@@ -6,9 +6,10 @@ import { HomePageLocale } from "@/app/[locale]/HomePageLocale";
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = params.locale || "en";
+  const { locale: lang } = await Promise.resolve(params);
+  const locale = lang || "en";
   const t = await getTranslations({ locale });
   return {
     title: t("homeTitle"),
