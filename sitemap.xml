@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 <url>
-<loc>https://shutdown-timer.com</loc>
-<lastmod>2024-12-12T07:32:41.755Z</lastmod>
-<changefreq>yearly</changefreq>
-<priority>1</priority>
+<loc>https://shutdown-timer.com/</loc>
+<xhtml:link rel="alternate" hreflang="es" href="https://shutdown-timer.com/es" />
+<lastmod>2024-12-15T19:23:03.838Z</lastmod>
 </url>
 <url>
 <loc>https://shutdown-timer.com/faq</loc>
-<lastmod>2024-12-12T07:32:41.755Z</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.8</priority>
+<xhtml:link rel="alternate" hreflang="es" href="https://shutdown-timer.com/es/faq" />
+<lastmod>2024-12-15T19:23:03.838Z</lastmod>
 </url>
 </urlset>
