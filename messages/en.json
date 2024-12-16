@@ -77,5 +77,7 @@
   "faqDescription": "Learn how to create commands for shutdown, restart, sleep, and more on Windows 10/11 & MacOS with our comprehensive FAQ.",
   "whenDownloading": "When downloading on macOS, make sure to run the following command in Terminal",
   "successfullyCopied": "Successfully copied!",
-  "failedToCopy": "Failed to copy text."
+  "failedToCopy": "Failed to copy text.",
+  "download": "Download",
+  "now": "Now"
 }

@@ -47,17 +47,15 @@ export const TextFieldCopy = () => {
   return (
     <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
       <TextareaAutosize
-        //label="Command"
         onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
           setValue("cmd", event.target.value, {
             shouldTouch: true,
           });
         }}
         className={s.textarea}
-        //multiline
         minRows={3}
         value={cmd}
-      ></TextareaAutosize>
+      />
     </Box>
   );
 };

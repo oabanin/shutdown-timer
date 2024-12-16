@@ -17,7 +17,7 @@ export const getCMDWindows = ({
 }) => {
   const f = isForced ? "/f " : "";
   const connector = isOneLine ? " & " : NewLine.win;
-  const nobreakRundll32 = `${nobreak}${connector}${rundll32}`;
+  const nobreakConnector = `${nobreak}${connector}`;
   const isNow = secondsToAction === "0";
 
   switch (action) {
@@ -34,16 +34,18 @@ export const getCMDWindows = ({
         action: "log off",
       });
     case Action.lock:
-      const lock = `${nobreakRundll32} user32.dll,LockWorkStation`;
+      let lock = `${rundll32} user32.dll,LockWorkStation`;
       if (isNow) return lock;
+      lock = nobreakConnector + lock;
       return generateLongCmd({
         secondsToAction,
         cmd: lock,
         action: "lock",
       });
     case Action.sleep:
-      const sleep = `${nobreakRundll32} powrprof.dll,SetSuspendState Sleep`;
+      let sleep = `${rundll32} powrprof.dll,SetSuspendState Sleep`;
       if (isNow) return sleep;
+      sleep = nobreakConnector + sleep;
       return generateLongCmd({
         secondsToAction,
         action: "sleep",
@@ -78,7 +80,8 @@ set /a seconds=${secondsToAction}
 
 :loop
 cls
-echo The computer will ${action} in %seconds% seconds. Close this window if you want to cancel
+echo The computer will ${action} in %seconds% seconds
+echo Close this window if you want to cancel
 set /a seconds-=1
 if %seconds% leq 0 goto lock
 ping -n 2 127.0.0.1 >nul

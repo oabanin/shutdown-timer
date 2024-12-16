@@ -1,5 +1,8 @@
-//Comments
+//add Comments
 
+https://gist.github.com/oilvier/70abd45d1f2ffc98b568
+//bookmarks
+   alert("Press " + (navigator.userAgent.toLowerCase().indexOf('mac') != -1 ?  'Command/Cmd' : 'CTRL') + "+D to bookmark page.");
 
 add save as shortcut
 https://www.npmjs.com/package/create-desktop-shortcuts

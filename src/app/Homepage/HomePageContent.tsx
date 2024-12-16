@@ -19,6 +19,7 @@ import { Action, getCategoryForOS, NewLine, OS, Time } from "@/const/const";
 import { TValues } from "@/types";
 import { download } from "@/utils/download";
 import dayjs from "dayjs";
+import WindowsTable from "@/app/Homepage/WindowsTable/WindowsTable";
 
 const defaultValues: TValues = {
   action: Action.shutdown,
@@ -102,6 +103,7 @@ export const HomePageContent = () => {
           alignItems: "center",
         }}
       >
+        <WindowsTable />
         <Typography component="p" sx={{ mb: 2 }}>
           {t.rich("generate", {
             strong: (chunks) => <b>{chunks}</b>,
