@@ -77,5 +77,13 @@
   "faqDescription": "Aprende cómo crear comandos para apagar, reiniciar, suspender y más en Windows 10/11 y MacOS con nuestras completas preguntas frecuentes.",
   "whenDownloading": "Al descargar en macOS, asegúrate de ejecutar el siguiente comando en la Terminal",
   "successfullyCopied": "¡Copiado con éxito!",
-  "failedToCopy": "No se pudo copiar el texto."
+  "failedToCopy": "No se pudo copiar el texto.",
+  "download": "Descargar",
+  "now": "Ahora",
+  "readyCommands": "Comandos de apagado listos para usar",
+  "eightHours": "8 horas",
+  "fiveMinutes": "5 minutos",
+  "nineHours": "9 horas",
+  "thirtySeconds": "30 segundos",
+  "fifteenMinutes": "15 minutos"
 }
