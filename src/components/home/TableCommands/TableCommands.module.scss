@@ -1,0 +1,11 @@
+.button{
+  width: 100%;
+}
+
+.pre{
+  white-space: pre-wrap; /* Keeps newlines */
+  border: 1px solid #ccc;
+  padding: 10px;
+  min-height: 100px;
+  overflow-y: auto; /* Adds scrolling if needed */
+}

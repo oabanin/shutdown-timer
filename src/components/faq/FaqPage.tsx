@@ -1,5 +1,5 @@
 "use client";
-import { FaqContent } from "@/app/faq/FaqContent";
+import { FaqContent } from "@/components/faq/FaqContent";
 import * as React from "react";
 import messages from "../../../messages/en.json";
 import { LocalePageLayout } from "@/app/LocalePageLayout";

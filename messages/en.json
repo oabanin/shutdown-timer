@@ -79,5 +79,11 @@
   "successfullyCopied": "Successfully copied!",
   "failedToCopy": "Failed to copy text.",
   "download": "Download",
-  "now": "Now"
+  "now": "Now",
+  "readyCommands": "Ready-to-use shutdown commands",
+  "eightHours": "8 hours",
+  "fiveMinutes": "5 minutes",
+  "nineHours": "9 hours",
+  "thirtySeconds": "30 seconds",
+  "fifteenMinutes": "15 minutes"
 }

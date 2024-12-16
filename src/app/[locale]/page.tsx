@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { getTranslations } from "next-intl/server";
-import { HomePageLocale } from "@/app/[locale]/HomePageLocale";
+import { HomePageLocale } from "@/components/home/Homepage/HomePageLocale";
 
 export async function generateMetadata({
   params,

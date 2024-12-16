@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import { GenerateValues, TGenerateFilename } from "@/types";
 import { generateFilename } from "@/utils/generateFilename";
 
-export const generateAll = (time: number) => {
+export const generateAll = (time: number, os: OS) => {
   const timeString = time.toString();
   const isForced = true;
 
@@ -12,7 +12,7 @@ export const generateAll = (time: number) => {
     date: dayjs(),
     seconds: "0",
     minutes: "0",
-    os: OS.WINDOWS,
+    os: os,
     isForced,
     isOneLine: false,
     time: timeString,
@@ -22,7 +22,7 @@ export const generateAll = (time: number) => {
     date: dayjs(),
     seconds: "0",
     minutes: "0",
-    os: OS.WINDOWS,
+    os: os,
     time: timeString,
   };
 

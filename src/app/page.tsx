@@ -1,7 +1,7 @@
 import * as React from "react";
 import "../styles/global.css";
 import { getTranslations } from "next-intl/server";
-import { Homepage } from "@/app/Homepage/Homepage";
+import { Homepage } from "@/components/home/Homepage/Homepage";
 
 export async function generateMetadata({
   params,
