@@ -1,8 +1,17 @@
 //add Comments
+//Добавить переключение локалей
+//Добавление Bookmarks
+//сгенерировать иконки и добавить
+//linux/unix взять с https://shutdownti.me/
+//добавить powershell
 
 https://gist.github.com/oilvier/70abd45d1f2ffc98b568
-//bookmarks
-   alert("Press " + (navigator.userAgent.toLowerCase().indexOf('mac') != -1 ?  'Command/Cmd' : 'CTRL') + "+D to bookmark page.");
+
+KEYBOARDS
+https://codepen.io/carlcalderon/pen/nOybKz
+https://codepen.io/Alca/pen/JBYvbB
+https://codepen.io/evilpaper/pen/dyyZjLQ
+https://codepen.io/dustinliamc/pen/ALxBaA
 
 add save as shortcut
 https://www.npmjs.com/package/create-desktop-shortcuts

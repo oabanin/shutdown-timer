@@ -85,5 +85,7 @@
   "fiveMinutes": "5 minutos",
   "nineHours": "9 horas",
   "thirtySeconds": "30 segundos",
-  "fifteenMinutes": "15 minutos"
+  "fifteenMinutes": "15 minutos",
+  "addToBookmarks": "Añadir a marcadores",
+  "pressKeyBoard": "Pulsa <strong>{cmd} + D</strong> para añadir la página a marcadores."
 }

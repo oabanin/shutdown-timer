@@ -25,6 +25,7 @@ import { useRouter } from "next/navigation";
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { AddToBookmarks } from "@/components/home/AddToBookmarks/AddToBookmarks";
 
 const drawerWidth = 240;
 
@@ -111,6 +112,7 @@ export default function DrawerAppBar({ locale }: { locale: string }) {
                   {item.text}
                 </Button>
               ))}
+              <AddToBookmarks />
             </Box>
           </Toolbar>
         </Container>
