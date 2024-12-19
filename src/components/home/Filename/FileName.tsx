@@ -12,10 +12,20 @@ import { useTranslations } from "next-intl";
 export const FileName = () => {
   const { control, setValue, getFieldState } = useFormContext<TValues>();
 
-  const [action, time, date, seconds, minutes, os, filename] = useWatch({
-    control,
-    name: ["action", "time", "date", "seconds", "minutes", "os", "filename"],
-  });
+  const [action, time, date, seconds, minutes, os, filename, commandTool] =
+    useWatch({
+      control,
+      name: [
+        "action",
+        "time",
+        "date",
+        "seconds",
+        "minutes",
+        "os",
+        "filename",
+        "commandTool",
+      ],
+    });
 
   const name = generateFilename({
     action,
@@ -24,6 +34,7 @@ export const FileName = () => {
     seconds,
     minutes,
     os,
+    commandTool,
   });
   const t = useTranslations();
   useEffect(() => {

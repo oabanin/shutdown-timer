@@ -38,6 +38,11 @@ export enum OS {
   LINUX = "Linux",
 }
 
+export enum COMMAND_TOOL {
+  powershell = "powershell",
+  cmd = "cmd",
+}
+
 // Define the OS categories using a Map
 const OS_GROUPS = new Map([
   [OS.WINDOWS, [OS.WINDOWS]],

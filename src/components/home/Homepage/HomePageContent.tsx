@@ -15,11 +15,19 @@ import * as React from "react";
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 import { UAParser } from "ua-parser-js";
-import { Action, getCategoryForOS, NewLine, OS, Time } from "@/const/const";
+import {
+  Action,
+  COMMAND_TOOL,
+  getCategoryForOS,
+  NewLine,
+  OS,
+  Time,
+} from "@/const/const";
 import { TValues } from "@/types";
 import { download } from "@/utils/download";
 import dayjs from "dayjs";
 import { TabsCommands } from "@/components/home/Tabs/Tabs";
+import ChooseCommandTool from "@/components/home/ChooseCommandTool/ChooseCommandTool";
 
 const defaultValues: TValues = {
   action: Action.shutdown,
@@ -32,6 +40,7 @@ const defaultValues: TValues = {
   isOneLine: false,
   filename: "",
   cmd: "",
+  commandTool: COMMAND_TOOL.cmd,
 };
 
 export const HomePageContent = () => {
@@ -74,6 +83,7 @@ export const HomePageContent = () => {
           >
             <div>
               <ChooseOS />
+              <ChooseCommandTool />
             </div>
             <div>
               <ChooseAction />

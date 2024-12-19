@@ -1,3 +1,8 @@
+Start-Sleep -Seconds 7200; Stop-Computer
+Start-Sleep -Seconds 7200; Restart-Computer
+
+https://github.com/GitHub30/toast-notification-examples
+
 //add Comments
 //Таймер с отсчетом
 //Добавить переключение локалей

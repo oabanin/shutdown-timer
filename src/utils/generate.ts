@@ -18,6 +18,7 @@ export const generate = (data: GenerateValues) => {
     });
   }
   return getCMDWindows({
+    commandTool: data.commandTool,
     secondsToAction,
     action: data.action,
     isForced: data.isForced,

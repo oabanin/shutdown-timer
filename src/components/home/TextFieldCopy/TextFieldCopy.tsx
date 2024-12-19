@@ -11,21 +11,32 @@ import { useEffect } from "react";
 export const TextFieldCopy = () => {
   const { control, setValue } = useFormContext<TValues>();
 
-  const [action, time, date, seconds, minutes, os, cmd, isForced, isOneLine] =
-    useWatch({
-      control,
-      name: [
-        "action",
-        "time",
-        "date",
-        "seconds",
-        "minutes",
-        "os",
-        "cmd",
-        "isForced",
-        "isOneLine",
-      ],
-    });
+  const [
+    action,
+    time,
+    date,
+    seconds,
+    minutes,
+    os,
+    cmd,
+    isForced,
+    isOneLine,
+    commandTool,
+  ] = useWatch({
+    control,
+    name: [
+      "action",
+      "time",
+      "date",
+      "seconds",
+      "minutes",
+      "os",
+      "cmd",
+      "isForced",
+      "isOneLine",
+      "commandTool",
+    ],
+  });
 
   const command = generate({
     action,
@@ -36,6 +47,7 @@ export const TextFieldCopy = () => {
     os,
     isForced,
     isOneLine,
+    commandTool,
   } as GenerateValues);
 
   useEffect(() => {

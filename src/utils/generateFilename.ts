@@ -1,4 +1,4 @@
-import { Action, CustomTime, OS, Time } from "@/const/const";
+import { Action, COMMAND_TOOL, CustomTime, OS, Time } from "@/const/const";
 import { getEnumName } from "@/utils/getEnumName";
 import { isEnumValue } from "@/utils/isEnumValue";
 import { TGenerateFilename } from "@/types";
@@ -11,6 +11,7 @@ export const generateFilename = ({
   date,
   seconds,
   minutes,
+  commandTool,
 }: TGenerateFilename) => {
   const isMacOS = os === OS.MACOS;
   let timeName;
@@ -36,7 +37,9 @@ export const generateFilename = ({
 
   const isAbortAction = action === Action.abort;
   const timeSuffix = isAbortAction ? "" : `_${timeName || ""}`;
-  const extension = isMacOS ? ".command" : ".bat";
+  const isPowerShell = commandTool === COMMAND_TOOL.powershell;
+  const winExtension = isPowerShell ? ".ps1" : ".bat";
+  const extension = isMacOS ? ".command" : winExtension;
 
   return `${action}${timeSuffix}${extension}`;
 };
