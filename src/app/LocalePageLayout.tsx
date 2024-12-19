@@ -7,7 +7,6 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "@/theme";
 import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@/components/AppBar";
-import Container from "@mui/material/Container";
 
 import { AbstractIntlMessages, NextIntlClientProvider } from "next-intl"; // Adjust this path to your messages file
 export const LocalePageLayout = ({
@@ -34,7 +33,7 @@ export const LocalePageLayout = ({
             <ThemeProvider theme={theme}>
               <CssBaseline />
               <AppBar locale={locale} />
-              <Container maxWidth="lg">{children}</Container>
+              {children}
             </ThemeProvider>
           </AppRouterCacheProvider>
         </NextIntlClientProvider>

@@ -45,7 +45,7 @@ export default function DrawerAppBar({ locale }: { locale: string }) {
 
   const navItems = [
     { text: t("home"), value: "/" },
-    // { text: "About", value: "/about" },
+    { text: t("tutorials"), value: "/tutorials" },
     { text: t("faq"), value: "/faq" },
     // { text: "Contact", value: "/contact" },
   ];
@@ -78,9 +78,12 @@ export default function DrawerAppBar({ locale }: { locale: string }) {
   );
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar component="nav">
+    <>
+      <AppBar
+        component="nav"
+        position="fixed"
+        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      >
         <Container maxWidth="lg">
           <Toolbar variant="dense" disableGutters>
             <IconButton
@@ -136,9 +139,6 @@ export default function DrawerAppBar({ locale }: { locale: string }) {
           {drawer}
         </Drawer>
       </nav>
-      <Box component="main" sx={{ p: 1 }}>
-        <Toolbar />
-      </Box>
-    </Box>
+    </>
   );
 }

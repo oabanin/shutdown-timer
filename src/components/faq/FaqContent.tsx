@@ -100,49 +100,39 @@ export const FaqContent = () => {
   ];
 
   return (
-    <>
-      <Container maxWidth="lg">
-        <Box
-          sx={{
-            my: 4,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
-        >
-          {faqData.map((item) => {
-            return (
-              <>
-                <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
-                  {item.name}
-                </Typography>
-                <Box sx={{ mb: 4 }}>
-                  {item.questions.map((question) => (
-                    <>
-                      <Typography variant="h6" component="div">
-                        {question.name}
-                      </Typography>
-                      <Typography component="p" sx={{ mb: 2 }}>
-                        {question.text}
-                      </Typography>
-                    </>
-                  ))}
-                </Box>
-              </>
-            );
-          })}
-          {/*<Typography variant="h4" component="h1" sx={{ mb: 2 }}>*/}
-          {/*  Material UI - Next.js example in TypeScript*/}
-          {/*</Typography>*/}
-          {/*<Box sx={{ maxWidth: "sm" }}>*/}
-          {/*  <Button variant="contained" component={Link} href="/">*/}
-          {/*    Go to the home page*/}
-          {/*  </Button>*/}
-          {/*</Box>*/}
-          {/*<ProTip />*/}
-          <Copyright />
-        </Box>
-      </Container>
-    </>
+    <Container maxWidth="lg">
+      <Box
+        sx={{
+          my: 4,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        {faqData.map((item) => {
+          return (
+            <>
+              <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
+                {item.name}
+              </Typography>
+              <Box sx={{ mb: 4 }}>
+                {item.questions.map((question) => (
+                  <>
+                    <Typography variant="h6" component="div">
+                      {question.name}
+                    </Typography>
+                    <Typography component="p" sx={{ mb: 2 }}>
+                      {question.text}
+                    </Typography>
+                  </>
+                ))}
+              </Box>
+            </>
+          );
+        })}
+        {/*<ProTip />*/}
+        <Copyright />
+      </Box>
+    </Container>
   );
 };

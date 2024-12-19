@@ -20,6 +20,8 @@ import { TValues } from "@/types";
 import { download } from "@/utils/download";
 import dayjs from "dayjs";
 import { TabsCommands } from "@/components/home/Tabs/Tabs";
+import Copyright from "@/components/Copyright";
+import Container from "@mui/material/Container";
 
 const defaultValues: TValues = {
   action: Action.shutdown,
@@ -57,70 +59,79 @@ export const HomePageContent = () => {
     download(prefix + data.cmd, data.filename, "text/plain;charset=utf-8");
   };
   return (
-    <SnackbarProvider>
-      <FormProvider reset={reset} handleSubmit={handleSubmit} {...rest}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Typography variant="h4" component="h1" sx={{ mb: 1 }}>
-            {t("shutdownTimer")}
+    <Container maxWidth="lg">
+      <Box
+        sx={{
+          mb: 4,
+        }}
+      >
+        <SnackbarProvider>
+          <FormProvider reset={reset} handleSubmit={handleSubmit} {...rest}>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <Typography variant="h4" component="h1" sx={{ mb: 1 }}>
+                {t("shutdownTimer")}
+              </Typography>
+              <Box
+                sx={{
+                  my: 4,
+                  justifyContent: "center",
+                  display: "flex",
+                  gap: "5px",
+                  flexWrap: "wrap",
+                }}
+              >
+                <div>
+                  <ChooseOS />
+                </div>
+                <div>
+                  <ChooseAction />
+                  <div>
+                    <Forced />
+                    <OneLineCommand />
+                  </div>
+                  <div>
+                    <FileName />
+                  </div>
+                </div>
+                <div>
+                  <ChooseTime />
+                </div>
+              </Box>
+              <TextFieldCopy />
+              <AlertMacOs />
+              <ActionButtons />
+            </form>
+          </FormProvider>
+
+          <Typography variant="h4" component="h1" sx={{ mt: 10, mb: 3 }}>
+            {t("readyCommands")}
           </Typography>
+          <TabsCommands />
           <Box
             sx={{
               my: 4,
-              justifyContent: "center",
               display: "flex",
-              gap: "5px",
-              flexWrap: "wrap",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            <div>
-              <ChooseOS />
-            </div>
-            <div>
-              <ChooseAction />
-              <div>
-                <Forced />
-                <OneLineCommand />
-              </div>
-              <div>
-                <FileName />
-              </div>
-            </div>
-            <div>
-              <ChooseTime />
-            </div>
+            <Typography component="p" sx={{ mb: 2 }}>
+              {t.rich("generate", {
+                strong: (chunks) => <b>{chunks}</b>,
+                windows: "Windows Vista/7/8/10/11",
+                macos: "MacOS",
+              })}
+            </Typography>
+            <Typography component="p" sx={{ mb: 2 }}>
+              {t.rich("noCoding", {
+                strong: (chunks) => <b>{chunks}</b>,
+              })}
+            </Typography>
           </Box>
-          <TextFieldCopy />
-          <AlertMacOs />
-          <ActionButtons />
-        </form>
-      </FormProvider>
-
-      <Typography variant="h4" component="h1" sx={{ mt: 10, mb: 3 }}>
-        {t("readyCommands")}
-      </Typography>
-      <TabsCommands />
-      <Box
-        sx={{
-          my: 4,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Typography component="p" sx={{ mb: 2 }}>
-          {t.rich("generate", {
-            strong: (chunks) => <b>{chunks}</b>,
-            windows: "Windows Vista/7/8/10/11",
-            macos: "MacOS",
-          })}
-        </Typography>
-        <Typography component="p" sx={{ mb: 2 }}>
-          {t.rich("noCoding", {
-            strong: (chunks) => <b>{chunks}</b>,
-          })}
-        </Typography>
+        </SnackbarProvider>
+        <Copyright />
       </Box>
-    </SnackbarProvider>
+    </Container>
   );
 };
