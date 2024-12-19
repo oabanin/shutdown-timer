@@ -1,4 +1,4 @@
-import { Action, NewLine } from "@/const/const";
+import { Action, COMMAND_TOOL, NewLine } from "@/const/const";
 
 const shutdown = "shutdown";
 const rundll32 = "rundll32.exe";
@@ -9,12 +9,15 @@ export const getCMDWindows = ({
   secondsToAction,
   isForced,
   isOneLine,
+  commandTool,
 }: {
   action: Action;
   secondsToAction: string;
   isForced: boolean;
   isOneLine: boolean;
+  commandTool: COMMAND_TOOL;
 }) => {
+  const isPowerShell = commandTool === COMMAND_TOOL.powershell;
   const f = isForced ? "/f " : "";
   const connector = isOneLine ? " & " : NewLine.win;
   const nobreakConnector = `${nobreak}${connector}`;
@@ -29,6 +32,7 @@ export const getCMDWindows = ({
       const logout = `${shutdown} /l ${f}`;
       if (isNow) return logout;
       return generateLongCmd({
+        isPowerShell,
         secondsToAction,
         cmd: logout,
         action: "log off",
@@ -36,8 +40,9 @@ export const getCMDWindows = ({
     case Action.lock:
       let lock = `${rundll32} user32.dll,LockWorkStation`;
       if (isNow) return lock;
-      lock = nobreakConnector + lock;
+      lock = isPowerShell ? lock : nobreakConnector + lock;
       return generateLongCmd({
+        isPowerShell,
         secondsToAction,
         cmd: lock,
         action: "lock",
@@ -45,8 +50,9 @@ export const getCMDWindows = ({
     case Action.sleep:
       let sleep = `${rundll32} powrprof.dll,SetSuspendState Sleep`;
       if (isNow) return sleep;
-      sleep = nobreakConnector + sleep;
+      sleep = isPowerShell ? sleep : nobreakConnector + sleep;
       return generateLongCmd({
+        isPowerShell,
         secondsToAction,
         action: "sleep",
         cmd: sleep,
@@ -55,33 +61,50 @@ export const getCMDWindows = ({
       const hibernate = `${shutdown} /h ${f}`;
       if (isNow) return hibernate;
       return generateLongCmd({
+        isPowerShell,
         secondsToAction,
         action: "hibernate",
         cmd: hibernate,
       });
     case Action.abort:
       return `${shutdown} /a`;
-    // case Action.hibernate:
-    //   return `${timeout} ${secondsToAction} ${nobreakRundll32} powrprof.dll,SetSuspendState Hibernate`;
   }
 };
 
 const generateLongCmd = ({
+  isPowerShell,
   secondsToAction,
   action,
   cmd,
 }: {
+  isPowerShell: boolean;
   secondsToAction: string;
   action: "log off" | "lock" | "sleep" | "hibernate";
   cmd: string;
 }) => {
+  const closeTxt = "Close this window if you want to cancel";
+
+  if (isPowerShell) {
+    return `$seconds = ${secondsToAction}
+
+while ($seconds -gt 0) {
+    Clear-Host
+    Write-Host "The computer will ${action} in $seconds seconds"
+    Write-Host "${closeTxt}"
+    Start-Sleep -Seconds 1
+    $seconds -= 1
+}
+
+${cmd}`;
+  }
+
   return `@echo off
 set /a seconds=${secondsToAction}
 
 :loop
 cls
 echo The computer will ${action} in %seconds% seconds
-echo Close this window if you want to cancel
+echo ${closeTxt}
 set /a seconds-=1
 if %seconds% leq 0 goto lock
 ping -n 2 127.0.0.1 >nul

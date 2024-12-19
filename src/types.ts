@@ -1,4 +1,4 @@
-import { Action, OS } from "@/const/const";
+import { Action, COMMAND_TOOL, OS } from "@/const/const";
 import dayjs from "dayjs";
 
 export type TValues = {
@@ -8,6 +8,7 @@ export type TValues = {
   seconds: string;
   minutes: string;
   os: OS;
+  commandTool: COMMAND_TOOL;
   isForced: boolean;
   isOneLine: boolean;
 

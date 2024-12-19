@@ -15,13 +15,21 @@ import * as React from "react";
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 import { UAParser } from "ua-parser-js";
-import { Action, getCategoryForOS, NewLine, OS, Time } from "@/const/const";
+import {
+  Action,
+  COMMAND_TOOL,
+  getCategoryForOS,
+  NewLine,
+  OS,
+  Time,
+} from "@/const/const";
 import { TValues } from "@/types";
 import { download } from "@/utils/download";
 import dayjs from "dayjs";
 import { TabsCommands } from "@/components/home/Tabs/Tabs";
 import Copyright from "@/components/Copyright";
 import Container from "@mui/material/Container";
+import ChooseCommandTool from "@/components/home/ChooseCommandTool/ChooseCommandTool";
 
 const defaultValues: TValues = {
   action: Action.shutdown,
@@ -34,6 +42,7 @@ const defaultValues: TValues = {
   isOneLine: false,
   filename: "",
   cmd: "",
+  commandTool: COMMAND_TOOL.cmd,
 };
 
 export const HomePageContent = () => {
@@ -65,73 +74,74 @@ export const HomePageContent = () => {
           mb: 4,
         }}
       >
-        <SnackbarProvider>
-          <FormProvider reset={reset} handleSubmit={handleSubmit} {...rest}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <Typography variant="h4" component="h1" sx={{ mb: 1 }}>
-                {t("shutdownTimer")}
-              </Typography>
-              <Box
-                sx={{
-                  my: 4,
-                  justifyContent: "center",
-                  display: "flex",
-                  gap: "5px",
-                  flexWrap: "wrap",
-                }}
-              >
-                <div>
-                  <ChooseOS />
-                </div>
-                <div>
-                  <ChooseAction />
-                  <div>
-                    <Forced />
-                    <OneLineCommand />
-                  </div>
-                  <div>
-                    <FileName />
-                  </div>
-                </div>
-                <div>
-                  <ChooseTime />
-                </div>
-              </Box>
-              <TextFieldCopy />
-              <AlertMacOs />
-              <ActionButtons />
-            </form>
-          </FormProvider>
-
-          <Typography variant="h4" component="h1" sx={{ mt: 10, mb: 3 }}>
-            {t("readyCommands")}
+    <SnackbarProvider>
+      <FormProvider reset={reset} handleSubmit={handleSubmit} {...rest}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Typography variant="h4" component="h1" sx={{ mb: 1 }}>
+            {t("shutdownTimer")}
           </Typography>
-          <TabsCommands />
           <Box
             sx={{
               my: 4,
-              display: "flex",
-              flexDirection: "column",
               justifyContent: "center",
-              alignItems: "center",
+              display: "flex",
+              gap: "5px",
+              flexWrap: "wrap",
             }}
           >
-            <Typography component="p" sx={{ mb: 2 }}>
-              {t.rich("generate", {
-                strong: (chunks) => <b>{chunks}</b>,
-                windows: "Windows Vista/7/8/10/11",
-                macos: "MacOS",
-              })}
-            </Typography>
-            <Typography component="p" sx={{ mb: 2 }}>
-              {t.rich("noCoding", {
-                strong: (chunks) => <b>{chunks}</b>,
-              })}
-            </Typography>
+            <div>
+              <ChooseOS />
+              <ChooseCommandTool />
+            </div>
+            <div>
+              <ChooseAction />
+              <div>
+                <Forced />
+                <OneLineCommand />
+              </div>
+              <div>
+                <FileName />
+              </div>
+            </div>
+            <div>
+              <ChooseTime />
+            </div>
           </Box>
-        </SnackbarProvider>
-        <Copyright />
+          <TextFieldCopy />
+          <AlertMacOs />
+          <ActionButtons />
+        </form>
+      </FormProvider>
+
+      <Typography variant="h4" component="h1" sx={{ mt: 10, mb: 3 }}>
+        {t("readyCommands")}
+      </Typography>
+      <TabsCommands />
+      <Box
+        sx={{
+          my: 4,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Typography component="p" sx={{ mb: 2 }}>
+          {t.rich("generate", {
+            strong: (chunks) => <b>{chunks}</b>,
+            windows: "Windows Vista/7/8/10/11",
+            macos: "MacOS",
+          })}
+        </Typography>
+        <Typography component="p" sx={{ mb: 2 }}>
+          {t.rich("noCoding", {
+            strong: (chunks) => <b>{chunks}</b>,
+          })}
+        </Typography>
       </Box>
-    </Container>
+    </SnackbarProvider>
+      <Copyright />
+    </Box>
+</Container>
   );
 };

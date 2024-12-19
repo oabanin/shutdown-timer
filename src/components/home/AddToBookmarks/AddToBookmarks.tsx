@@ -35,7 +35,7 @@ export const AddToBookmarks = () => {
             {t.rich("pressKeyBoard", {
               strong: (chunks) => <b>{chunks}</b>,
               cmd:
-                navigator.userAgent.toLowerCase().indexOf("mac") != -1
+                navigator?.userAgent?.toLowerCase().indexOf("mac") != -1
                   ? "Command/Cmd"
                   : "CTRL",
             })}

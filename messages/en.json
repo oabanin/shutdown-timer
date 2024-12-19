@@ -88,5 +88,6 @@
   "fifteenMinutes": "15 minutes",
   "addToBookmarks": "Add to bookmarks",
   "pressKeyBoard": "Press <strong>{cmd} + D</strong> to bookmark page.",
-  "tutorials": "Tutorials"
+  "tutorials": "Tutorials",
+  "chooseCommandTool": "Choose command tool"
 }
