@@ -2,7 +2,6 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
@@ -15,31 +14,21 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-import {
-  Link as LinkLocale,
-  useRouter as useRouterLocale,
-} from "src/i18n/routing";
-import Link from "next/link";
-
-import { useRouter } from "next/navigation";
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { AddToBookmarks } from "@/components/home/AddToBookmarks/AddToBookmarks";
+import { useAppRouter } from "@/hooks/useAppRouter";
 
 const drawerWidth = 240;
 
 export default function DrawerAppBar({ locale }: { locale: string }) {
-  const isDefaultLocale = locale === "en";
+  const { router, Link } = useAppRouter(locale);
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-  const router = useRouter();
-  const routerLocale = useRouterLocale();
-
-  const LinkTag = isDefaultLocale ? Link : LinkLocale;
 
   const t = useTranslations();
 
@@ -60,10 +49,7 @@ export default function DrawerAppBar({ locale }: { locale: string }) {
         {navItems.map((item) => (
           <ListItem
             onClick={() => {
-              if (isDefaultLocale) {
-                return router.push(item.value);
-              }
-              return routerLocale.push(item.value);
+              router.push(item.value);
             }}
             key={item.value}
             disablePadding
@@ -99,9 +85,9 @@ export default function DrawerAppBar({ locale }: { locale: string }) {
               component="div"
               sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
             >
-              <LinkTag href="/">
+              <Link href="/">
                 <Image alt="logo" width={65} height={50} src="/logo/logo.svg" />
-              </LinkTag>
+              </Link>
             </Box>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
               {navItems.map((item) => (
@@ -109,7 +95,7 @@ export default function DrawerAppBar({ locale }: { locale: string }) {
                   key={item.value}
                   sx={{ color: "#fff" }}
                   // variant="contained"
-                  component={LinkTag}
+                  component={Link}
                   href={item.value}
                 >
                   {item.text}
