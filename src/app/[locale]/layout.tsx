@@ -1,5 +1,4 @@
 import * as React from "react";
-import "../../styles/global.css";
 
 import { notFound } from "next/navigation";
 import { locales, routing } from "@/i18n/routing";

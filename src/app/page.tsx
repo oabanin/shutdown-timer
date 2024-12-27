@@ -1,5 +1,4 @@
 import * as React from "react";
-import "../styles/global.css";
 import { getTranslations } from "next-intl/server";
 import { Homepage } from "@/components/home/Homepage/Homepage";
 

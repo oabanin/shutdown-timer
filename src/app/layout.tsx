@@ -1,4 +1,5 @@
 import * as React from "react";
+import "../styles/global.css";
 
 export default async function RootLayout({
   children,

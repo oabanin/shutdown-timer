@@ -87,5 +87,7 @@
   "thirtySeconds": "30 segundos",
   "fifteenMinutes": "15 minutos",
   "addToBookmarks": "Añadir a marcadores",
-  "pressKeyBoard": "Pulsa <strong>{cmd} + D</strong> para añadir la página a marcadores."
+  "pressKeyBoard": "Pulsa <strong>{cmd}</strong> + <strong>D</strong> para añadir la página a marcadores.",
+  "tutorials": "Tutoriales",
+  "chooseCommandTool": "Elegir herramienta de comandos"
 }

@@ -8,7 +8,9 @@ import theme from "@/theme";
 import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@/components/AppBar";
 
-import { AbstractIntlMessages, NextIntlClientProvider } from "next-intl"; // Adjust this path to your messages file
+import { AbstractIntlMessages, NextIntlClientProvider } from "next-intl";
+import { SnackbarProvider } from "@/context/SnackbarContext";
+
 export const LocalePageLayout = ({
   children,
   locale,
@@ -24,19 +26,37 @@ export const LocalePageLayout = ({
         <Favicons />
       </head>
       <body>
-        <NextIntlClientProvider
-          timeZone="America/New_York"
-          locale={locale}
-          messages={messages}
-        >
-          <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-            <ThemeProvider theme={theme}>
-              <CssBaseline />
-              <AppBar locale={locale} />
-              {children}
-            </ThemeProvider>
-          </AppRouterCacheProvider>
-        </NextIntlClientProvider>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+window.addEventListener('beforeinstallprompt', (event) => {
+  window.deferredPrompt = event;
+  const buttonInstall = document.getElementById('buttonInstall');
+  setTimeout(()=>{buttonInstall.classList.toggle('install-disabled', false);},300)
+});
+
+window.addEventListener('appinstalled', () => {
+  window.deferredPrompt = null;
+});
+
+`,
+          }}
+        ></script>
+        <SnackbarProvider>
+          <NextIntlClientProvider
+            timeZone="America/New_York"
+            locale={locale}
+            messages={messages}
+          >
+            <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+              <ThemeProvider theme={theme}>
+                <CssBaseline />
+                <AppBar locale={locale} />
+                {children}
+              </ThemeProvider>
+            </AppRouterCacheProvider>
+          </NextIntlClientProvider>
+        </SnackbarProvider>
       </body>
     </html>
   );

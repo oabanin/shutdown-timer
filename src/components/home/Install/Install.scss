@@ -1,0 +1,23 @@
+.install-disabled{
+  color: var(--mui-palette-action-disabled);
+  box-shadow: var(--mui-shadows-0);
+  background-color: var(--mui-palette-action-disabledBackground);
+  pointer-events: none;
+  cursor: default;
+}
+
+.installed{
+  display: none;
+}
+
+@media all and (display-mode: standalone) {
+  .install-button {
+    display: none;
+  }
+
+  .installed{
+    display: flex;
+  }
+
+}
+

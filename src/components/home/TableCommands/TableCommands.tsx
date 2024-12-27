@@ -46,7 +46,11 @@ const Cell = ({
       <Box sx={{ display: "flex", flexDirection: "column", gap: "5px" }}>
         <Buttons os={os} cmd={cmd} filename={filename} />
         <Collapse in={open} timeout="auto">
-          <div className={s.pre} contentEditable={true}>
+          <div
+            className={s.pre}
+            contentEditable={true}
+            suppressContentEditableWarning={true}
+          >
             {cmd}
           </div>
         </Collapse>

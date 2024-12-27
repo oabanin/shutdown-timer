@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 
+declare global {
+  interface Window {
+    MSStream?: unknown;
+  }
+}
+
 export const InstallPrompt = () => {
   const [isIOS, setIsIOS] = useState(false);
   const [isStandalone, setIsStandalone] = useState(false);
 
   useEffect(() => {
-    setIsIOS(
-      /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream,
-    );
+    setIsIOS(/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream);
 
     setIsStandalone(window.matchMedia("(display-mode: standalone)").matches);
   }, []);
@@ -27,7 +31,7 @@ export const InstallPrompt = () => {
             {" "}
             ⎋{" "}
           </span>
-          and then "Add to Home Screen"
+          and then Add to Home Screen
           <span role="img" aria-label="plus icon">
             {" "}
             ➕{" "}

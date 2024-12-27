@@ -11,3 +11,21 @@ code {
     padding: 3px 5px;
     font-family: ui-monospace, monospace;
 }
+
+kbd {
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-family: 'Roboto Mono', monospace;
+    color: #333;
+    background: #fff;
+    border: 2px solid rgba(200, 200, 200, 0.93);
+    border-radius: 4px;
+    box-shadow: 0 3px #b0b0b0, inset 0 -2px 4px rgba(11, 10, 10, 0.1), inset 0 3px 6px rgba(255, 255, 255, 0.78);
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+    margin: 0 4px;
+    line-height: 1.4;
+    transition: transform 0.1s, box-shadow 0.1s;
+    font-weight: bold;
+    white-space: nowrap;
+}

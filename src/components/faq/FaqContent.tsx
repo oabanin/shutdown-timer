@@ -4,9 +4,13 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Copyright from "@/components/Copyright";
 import * as React from "react";
+import { usePathname } from "@/i18n/routing";
 
 export const FaqContent = () => {
   const t = useTranslations();
+  const pathName = usePathname();
+
+  console.log(pathName);
   const faqData = [
     {
       name: t("generalQuestions"),
@@ -111,23 +115,23 @@ export const FaqContent = () => {
       >
         {faqData.map((item) => {
           return (
-            <>
+            <div key={item.name}>
               <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
                 {item.name}
               </Typography>
               <Box sx={{ mb: 4 }}>
                 {item.questions.map((question) => (
-                  <>
+                  <div key={question.name}>
                     <Typography variant="h6" component="div">
                       {question.name}
                     </Typography>
                     <Typography component="p" sx={{ mb: 2 }}>
                       {question.text}
                     </Typography>
-                  </>
+                  </div>
                 ))}
               </Box>
-            </>
+            </div>
           );
         })}
         {/*<ProTip />*/}

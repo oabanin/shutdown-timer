@@ -6,6 +6,8 @@ import { useFormContext, useWatch } from "react-hook-form";
 import { TValues } from "@/types";
 import { useCopyAndNotify } from "@/hooks/useCopyAndNotify";
 import { useTranslations } from "next-intl";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
 
 export const ActionButtons = () => {
   const { control } = useFormContext<TValues>();
@@ -31,6 +33,7 @@ export const ActionButtons = () => {
         }}
       >
         <Button
+          startIcon={<ContentCopyIcon />}
           onClick={handleCopy}
           className={s.button}
           type="button"
@@ -39,7 +42,12 @@ export const ActionButtons = () => {
         >
           {t("copyCommand")}
         </Button>
-        <Button type="submit" variant="contained" size="large">
+        <Button
+          startIcon={<FileDownloadIcon />}
+          type="submit"
+          variant="contained"
+          size="large"
+        >
           {t("downloadFile")}
         </Button>
       </Box>

@@ -19,6 +19,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { AddToBookmarks } from "@/components/home/AddToBookmarks/AddToBookmarks";
 import { useAppRouter } from "@/hooks/useAppRouter";
+import { Install } from "@/components/home/Install/Install";
 
 const drawerWidth = 240;
 
@@ -34,7 +35,7 @@ export default function DrawerAppBar({ locale }: { locale: string }) {
 
   const navItems = [
     { text: t("home"), value: "/" },
-    { text: t("tutorials"), value: "/tutorials" },
+    { text: t("tutorials"), value: "/tutorials/windows/shutdown" },
     { text: t("faq"), value: "/faq" },
     // { text: "Contact", value: "/contact" },
   ];
@@ -101,7 +102,11 @@ export default function DrawerAppBar({ locale }: { locale: string }) {
                   {item.text}
                 </Button>
               ))}
-              <AddToBookmarks />
+
+              <Box sx={{ display: "inline-flex", gap: "5px" }}>
+                <AddToBookmarks />
+                <Install />
+              </Box>
             </Box>
           </Toolbar>
         </Container>

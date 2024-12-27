@@ -1,7 +1,7 @@
 import Button from "@mui/material/Button";
 import * as React from "react";
 import { useTranslations } from "next-intl";
-
+import "./AddToBookmarks.scss";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
@@ -20,7 +20,12 @@ export const AddToBookmarks = () => {
   };
   return (
     <>
-      <Button variant="contained" color="secondary" onClick={handleClickOpen}>
+      <Button
+        className="bookmark-button"
+        variant="contained"
+        color="secondary"
+        onClick={handleClickOpen}
+      >
         {t("addToBookmarks")}
       </Button>
       <Dialog
@@ -33,7 +38,7 @@ export const AddToBookmarks = () => {
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             {t.rich("pressKeyBoard", {
-              strong: (chunks) => <b>{chunks}</b>,
+              strong: (chunks) => <kbd>{chunks}</kbd>,
               cmd:
                 navigator?.userAgent?.toLowerCase().indexOf("mac") != -1
                   ? "Command/Cmd"

@@ -1,4 +1,3 @@
-import { SnackbarProvider } from "@/context/SnackbarContext";
 import { FormProvider, useForm } from "react-hook-form";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -72,76 +71,75 @@ export const HomePageContent = () => {
       <Box
         sx={{
           mb: 4,
+          mt: 9,
         }}
       >
-    <SnackbarProvider>
-      <FormProvider reset={reset} handleSubmit={handleSubmit} {...rest}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Typography variant="h4" component="h1" sx={{ mb: 1 }}>
-            {t("shutdownTimer")}
-          </Typography>
-          <Box
-            sx={{
-              my: 4,
-              justifyContent: "center",
-              display: "flex",
-              gap: "5px",
-              flexWrap: "wrap",
-            }}
-          >
-            <div>
-              <ChooseOS />
-              <ChooseCommandTool />
-            </div>
-            <div>
-              <ChooseAction />
+        <FormProvider reset={reset} handleSubmit={handleSubmit} {...rest}>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Typography variant="h4" component="h1" sx={{ mb: 1 }}>
+              {t("shutdownTimer")}
+            </Typography>
+            <Box
+              sx={{
+                my: 4,
+                justifyContent: "center",
+                display: "flex",
+                gap: "5px",
+                flexWrap: "wrap",
+              }}
+            >
               <div>
-                <Forced />
-                <OneLineCommand />
+                <ChooseOS />
+                <ChooseCommandTool />
               </div>
               <div>
-                <FileName />
+                <ChooseAction />
+                <div>
+                  <Forced />
+                  <OneLineCommand />
+                </div>
+                <div>
+                  <FileName />
+                </div>
               </div>
-            </div>
-            <div>
-              <ChooseTime />
-            </div>
-          </Box>
-          <TextFieldCopy />
-          <AlertMacOs />
-          <ActionButtons />
-        </form>
-      </FormProvider>
+              <div>
+                <ChooseTime />
+              </div>
+            </Box>
+            <TextFieldCopy />
+            <AlertMacOs />
+            <ActionButtons />
+          </form>
+        </FormProvider>
 
-      <Typography variant="h4" component="h1" sx={{ mt: 10, mb: 3 }}>
-        {t("readyCommands")}
-      </Typography>
-      <TabsCommands />
-      <Box
-        sx={{
-          my: 4,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Typography component="p" sx={{ mb: 2 }}>
-          {t.rich("generate", {
-            strong: (chunks) => <b>{chunks}</b>,
-            windows: "Windows Vista/7/8/10/11",
-            macos: "MacOS",
-          })}
+        <Typography variant="h4" component="h1" sx={{ mt: 10, mb: 3 }}>
+          {t("readyCommands")}
         </Typography>
-        <Typography component="p" sx={{ mb: 2 }}>
-          {t.rich("noCoding", {
-            strong: (chunks) => <b>{chunks}</b>,
-          })}
-        </Typography>
+        <TabsCommands />
+        <Box
+          sx={{
+            my: 4,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Typography component="p" sx={{ mb: 2 }}>
+            {t.rich("generate", {
+              strong: (chunks) => <b>{chunks}</b>,
+              windows: "Windows Vista/7/8/10/11",
+              macos: "MacOS",
+            })}
+          </Typography>
+          <Typography component="p" sx={{ mb: 2 }}>
+            {t.rich("noCoding", {
+              strong: (chunks) => <b>{chunks}</b>,
+            })}
+          </Typography>
+        </Box>
+        <Copyright />
       </Box>
-    </SnackbarProvider>
-      <Copyright />
-    </Box>
-</Container>
+    </Container>
   );
 };

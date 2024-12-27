@@ -28,10 +28,10 @@ export async function sendNotification(message: string) {
   if (!subscription) {
     throw new Error("No subscription available");
   }
-
+  const fixedSubscription = subscription as unknown as webpush.PushSubscription;
   try {
     await webpush.sendNotification(
-      subscription,
+      fixedSubscription,
       JSON.stringify({
         title: "Test Notification",
         body: message,
