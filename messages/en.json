@@ -97,6 +97,7 @@
   "learnHowToSchedule": "Learn how to schedule a shutdown using the <code>shutdown /s /t 7200</code> command.",
   "runDialogTitle": "1. Using the Run Dialog Box (Windows + R)",
   "runDialogStep1": "Press Windows + R to open the Run dialog box.",
+  "runDialogStepAlternative": "Alternatively, right-click on the Start Menu (Windows icon on the bottom-left corner of the screen) and select Run from the context menu.",
   "runDialogStep2": "Type 'shutdown /s /t 7200' and press Enter.",
   "shortcutTitle": "2. Creating a Shortcut",
   "shortcutStep1": "Right-click on the desktop and select New > Shortcut.",
@@ -108,11 +109,16 @@
   "cmdStep2": "Type 'shutdown /s /t 7200' and press Enter.",
   "powershellTitle": "4. Using PowerShell",
   "powershellStep1": "Open PowerShell by typing 'PowerShell' in the Start menu and pressing Enter.",
+  "powershellStep1Alternative": "Alternatively, right-click on the Start Menu (Windows icon on the bottom-left corner of the screen) and select Windows PowerShell from the context menu.",
   "powershellStep2": "Type 'shutdown /s /t 7200' and press Enter.",
   "abortTitle": "5. How to Abort a Scheduled Shutdown",
   "abortStep1": "Open the Run dialog box (Windows + R), Command Prompt, or PowerShell.",
   "abortStep2": "Type 'shutdown /a' and press Enter to cancel the scheduled shutdown.",
   "downloadBatFile": "Download .bat File",
   "downloadPs1File": "Download .ps1 File",
-  "commandCopied": "Command copied to clipboard!"
+  "commandCopied": "Command copied to clipboard!",
+  "shutdownWindowsTitle": "Power Command Builder for Windows 10/11 & MacOS: Shutdown, Restart, Sleep, and More",
+  "shutdownWindowsDescription": "Create custom commands for shutdown, restart, sleep, hibernate, and more with Power Command Builder for Windows 10/11 & MacOS. Copy commands or download .bat and .command files for easy use.",
+  "shutdownWindowsReminder":"You will see a Windows log-on reminder that says, \"You're about to be signed out. Windows will shut down in the chosen time.\" This message confirms that the shutdown timer has been successfully set, and your computer will automatically turn off after the specified duration.",
+  "shutdownWindowsCancel":"You will see a Windows log-off reminder that says, \"Log off is cancelled. The scheduled shutdown has been cancelled.\" This message confirms that the shutdown has been successfully aborted."
 }

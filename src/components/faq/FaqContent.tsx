@@ -10,7 +10,6 @@ export const FaqContent = () => {
   const t = useTranslations();
   const pathName = usePathname();
 
-  console.log(pathName);
   const faqData = [
     {
       name: t("generalQuestions"),

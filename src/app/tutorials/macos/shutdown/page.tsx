@@ -1,5 +1,6 @@
 import * as React from "react";
 import { MacosShutdownPageComponent } from "@/components/tutorials/macos/MacosShutdownPageComponent";
+// import { getTranslations } from "next-intl/server";
 
 // export async function generateMetadata({
 //   params,
@@ -10,8 +11,8 @@ import { MacosShutdownPageComponent } from "@/components/tutorials/macos/MacosSh
 //   const locale = lang || "en";
 //   const t = await getTranslations({ locale });
 //   return {
-//     title: t("homeTitle"),
-//     description: t("homeDescription"),
+//     title: t("shutdownWindowsTitle"),
+//     description: t("shutdownWindowsDescription"),
 //   };
 // }
 

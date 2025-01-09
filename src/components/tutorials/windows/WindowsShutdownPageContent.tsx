@@ -14,6 +14,8 @@ import * as React from "react";
 import { useCopyAndNotify } from "@/hooks/useCopyAndNotify";
 import { download } from "@/utils/download";
 import { useTranslations } from "next-intl";
+import CardImage from "@/components/CardImage";
+import Image from "next/image";
 
 export const WindowsShutdownPageContent = () => {
   const { copyToClipboard } = useCopyAndNotify();
@@ -48,9 +50,34 @@ export const WindowsShutdownPageContent = () => {
             <ListItem>
               <ListItemText primary={t("runDialogStep1")} />
             </ListItem>
+
+            <ListItem>
+              <ListItemText primary={t("runDialogStepAlternative")} />
+            </ListItem>
+
+            <CardImage
+              maxWidth={375 / 1.5}
+              src="/tutorials/windows/start-menu-run.png"
+              height={879 / 1.5}
+            />
+
             <ListItem>
               <ListItemText primary={t("runDialogStep2")} />
             </ListItem>
+            <CardImage
+              maxWidth={466}
+              src="/tutorials/windows/shutdown/shutdown-run-command.png"
+              height={286}
+            />
+
+            <ListItem>
+              <ListItemText primary={t("shutdownWindowsReminder")} />
+            </ListItem>
+            <CardImage
+              maxWidth={484}
+              src="/tutorials/windows/shutdown/shutdown-120minutes.png"
+              height={249}
+            />
           </List>
         </CardContent>
       </Card>
@@ -62,12 +89,27 @@ export const WindowsShutdownPageContent = () => {
             <ListItem>
               <ListItemText primary={t("shortcutStep1")} />
             </ListItem>
+            <CardImage
+              maxWidth={763}
+              height={413}
+              src="/tutorials/windows/shutdown/shutdown-new-shortcut.png"
+            />
             <ListItem>
               <ListItemText primary={t("shortcutStep2")} />
             </ListItem>
+            <CardImage
+              maxWidth={900}
+              height={668}
+              src="/tutorials/windows/shutdown/shutdown-shortcut.png"
+            />
             <ListItem>
               <ListItemText primary={t("shortcutStep3")} />
             </ListItem>
+            <CardImage
+              maxWidth={197}
+              height={252}
+              src="/tutorials/windows/shutdown/shutdown-change-icon.png"
+            />
             <ListItem>
               <ListItemText primary={t("shortcutStep4")} />
             </ListItem>
@@ -82,10 +124,20 @@ export const WindowsShutdownPageContent = () => {
             <ListItem>
               <ListItemText primary={t("cmdStep1")} />
             </ListItem>
+            <CardImage
+              maxWidth={505}
+              height={316}
+              src="/tutorials/windows/runbox-cmd.png"
+            />
             <ListItem>
               <ListItemText primary={t("cmdStep2")} />
             </ListItem>
           </List>
+          <CardImage
+            maxWidth={1124 / 2}
+            height={679 / 2}
+            src="/tutorials/windows/shutdown/shutdown-cmd.png"
+          />
         </CardContent>
       </Card>
 
@@ -96,9 +148,28 @@ export const WindowsShutdownPageContent = () => {
             <ListItem>
               <ListItemText primary={t("powershellStep1")} />
             </ListItem>
+            <CardImage
+              maxWidth={468}
+              height={283}
+              src="/tutorials/windows/runbox-powershell.png"
+            />
+            <ListItem>
+              <ListItemText primary={t("powershellStep1Alternative")} />
+            </ListItem>
+
+            <CardImage
+              maxWidth={371 / 1.5}
+              src="/tutorials/windows/start-menu-powershell.png"
+              height={812 / 1.5}
+            />
             <ListItem>
               <ListItemText primary={t("powershellStep2")} />
             </ListItem>
+            <CardImage
+              maxWidth={1323 / 2}
+              height={698 / 2}
+              src="/tutorials/windows/shutdown/shutdown-powershell-window.png"
+            />
           </List>
         </CardContent>
       </Card>
@@ -113,6 +184,19 @@ export const WindowsShutdownPageContent = () => {
             <ListItem>
               <ListItemText primary={t("abortStep2")} />
             </ListItem>
+            <CardImage
+              maxWidth={468}
+              src="/tutorials/windows/shutdown-abort.png"
+              height={283}
+            />
+            <ListItem>
+              <ListItemText primary={t("shutdownWindowsCancel")} />
+            </ListItem>
+            <CardImage
+              maxWidth={468}
+              src="/tutorials/windows/shutdown/shutdown-cancelled.png"
+              height={183}
+            />
           </List>
         </CardContent>
       </Card>
